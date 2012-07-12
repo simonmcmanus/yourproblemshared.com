@@ -1,0 +1,10 @@
+<div><span class="from"><%=mail.from%></span>
+	<span class="cc"><%=mail.cc%></span>
+	
+	<%
+	var a = encoder.htmlDecode(mail.body);
+	a = a.replace(/mcmanus.simon@gmail.com/g, '****');
+//	a = a.replace(mail.to, '**');
+	%>
+	<div class="body"><%-a%></div>
+</div>

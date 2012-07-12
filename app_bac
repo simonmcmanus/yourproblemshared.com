@@ -2,9 +2,7 @@ var express = require('express');
 var ds = require('./lib/datastore.js');
 var app = express.createServer();
 var sizlate = require('sizlate');
-var ejs = require('ejs');
 var urls = require('./lib/urls.js');
-var encoder = require('./lib/encoder.js');
 // todo - remove this hack - awaiting release of sizlate.
 sizlate.classifyKeys = function(data, options) {
 	if((options && !options.classifyKeys) || typeof data == "undefined"){
@@ -36,7 +34,6 @@ app.enable("jsonp callback"); // enable jsonp
 
 
 app.register('.html', sizlate);
-app.register('.ejs', ejs);
 
  app.get(urls.HOME, function(req, res, next) {
     res.render('home.html', {
@@ -49,9 +46,10 @@ app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id
     }, function(data) {
-    console.log(encoder);
-//        data = sizlate.classifyKeys(data);
-        res.render('email.ejs', { layout:false, mail: data[0], encoder: encoder.encoder});
+        data = sizlate.classifyKeys(data);
+        res.render('email.html', {
+            selectors: data
+        });
     });
 });
 
@@ -78,14 +76,14 @@ app.get(urls.COMPANY , function(req, res, next) {
 });
 
 
-var sendEmail = function(to, subject, body) {
+var sendEmail = function(to, body) {
     // send email to 
     var postmark = require("postmark-api")('0193ddc8-91db-4e04-8569-72a9fe5a8c93');
     postmark.send({
         From: 'cc@yourproblemshared.com',
         To: to,
-        Subject: subject,
-        TextBody: body,
+        Subject: 'node-postmark testing',
+        TextBody: 'Just a test message from node-postmark',
     }, function(response, b, c){
         console.log('RESPONSE IS ', response, b,c);
     });
@@ -99,14 +97,12 @@ app.post(urls.INBOUND, function(req, res, next) {
         from: req.body.From,
         cc: req.body.Cc,
         subject: req.body.Subject,
-        body:  req.body.HtmlBody,
+        body:  req.body.TextBody,
         date: req.body.Date 
     }, function(data) {
         if(data) {
-            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
             //sendEmail(req.body.To, '');
-            console.log(data);
-            sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:'+url);
+            sendEmail(req.body.From, '');
             res.send('ok');
         }
     });
