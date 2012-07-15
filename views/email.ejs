@@ -1,8 +1,8 @@
 <div>
 	<%
 	var a = encoder.htmlDecode(mail.body);
-	a = a.replace(/mcmanus.simon@gmail.com/g, '****');
-	a = a.replace(mail.to, '**');
+	a = a.replace(/mail.from/g, '****');
+	a = a.replace(/mail.to/g, '**');
 	%>
 	<div class="body"><%-a%></div>
 </div>
