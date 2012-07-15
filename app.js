@@ -57,6 +57,7 @@ app.get(urls.EMAIL, function(req, res, next) {
     console.log(encoder);
         res.render('email.ejs', {  
             mail: data[0],
+            selected: '',
              encoder: encoder.encoder});
     });
 });
@@ -85,9 +86,9 @@ app.post(urls.SEARCH, function(req, res, next) {
     console.log(data);
 //        data = sizlate.classifyKeys(data);
         if(data.length > 0) {
-            res.render('search.ejs', {  data: data, urls: urls});
+            res.render('search.ejs', {  data: data, selected: '',  urls: urls});
         }else {
-            res.render('search-no-results.ejs', { data: data, urls: urls});
+            res.render('search-no-results.ejs', { data: data, selected: '', urls: urls});
         }
     });
 });
