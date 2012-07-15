@@ -134,7 +134,8 @@ app.post(urls.INBOUND, function(req, res, next) {
         from: req.body.From,
         cc: req.body.Cc,
         subject: req.body.Subject,
-        body:  req.body.HtmlBody,
+        textBody:  req.body.TextBody,
+        htmlBody:  req.body.HtmlBody,
         date: req.body.Date 
     }, function(data) {
         if(data) {
