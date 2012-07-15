@@ -66,9 +66,9 @@ app.get(urls.BROWSE, function(req, res, next) {
     console.log(data);
 //        data = sizlate.classifyKeys(data);
         if(data.length > 0) {
-            res.render('search.ejs', {  data: data, urls: urls});
+            res.render('search.ejs', {  data: data.reverse(), urls: urls});
         }else {
-            res.render('search-no-results.ejs', { data: data, urls: urls});
+            res.render('search-no-results.ejs', {  urls: urls});
         }
     });
 });
