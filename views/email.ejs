@@ -3,9 +3,9 @@
 	var a = encoder.htmlDecode(mail.body);
 
 
-	a = a.replace(new RegExp(mail.from, 'g'), 'p');
+	a = a.replace(new RegExp(mail.from, 'g'), '[details removed]');
 
-	a = a.replace(new RegExp(mail.to, 'g'), 'p');
+	a = a.replace(new RegExp(mail.to, 'g'), '[details removed]');
 
 	%>
 	<div class="body"><%-a%></div>
