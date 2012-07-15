@@ -38,15 +38,15 @@ app.register('.ejs', ejs);
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
  app.get(urls.HOME, function(req, res, next) {
-    res.render('home.ejs');
+    res.render('home.ejs', {selected: 'home'});
 });
 
  app.get(urls.FAQ, function(req, res, next) {
-    res.render('faq.ejs');
+    res.render('faq.ejs', {selected: 'faq'});
 });
 
  app.get(urls.CONTACT, function(req, res, next) {
-    res.render('contact.ejs');
+    res.render('contact.ejs', {selected: 'contact'});
 });
 
 
@@ -55,7 +55,9 @@ app.get(urls.EMAIL, function(req, res, next) {
         id: req.params.id
     }, function(data) {
     console.log(encoder);
-        res.render('email.ejs', {  mail: data[0], encoder: encoder.encoder});
+        res.render('email.ejs', {  
+            mail: data[0],
+             encoder: encoder.encoder});
     });
 });
 
@@ -66,7 +68,7 @@ app.get(urls.BROWSE, function(req, res, next) {
     console.log(data);
 //        data = sizlate.classifyKeys(data);
         if(data.length > 0) {
-            res.render('search.ejs', {  data: data.reverse(), urls: urls});
+            res.render('search.ejs', {  data: data.reverse(), urls: urls, selected: 'browse'});
         }else {
             res.render('search-no-results.ejs', {  urls: urls});
         }

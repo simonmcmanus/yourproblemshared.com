@@ -5,7 +5,7 @@ console.log('urls', urls);
 var c = data.length;
 while(c--) {
 	%>
-		<div>
+		<div class="email">
 		<a href="<%=urls.get('EMAIL', { id: data[c].id, company: data[c].company })%>">
 		<h4><%=data[c].subject%></h4>
 		<h5>to:<%=data[c].to%></h5>
