@@ -1,0 +1,20 @@
+<div>
+
+<%
+console.log('urls', urls);
+var c = data.length;
+while(c--) {
+	%>
+		<div>
+		<a href="<%=urls.get('EMAIL', { id: data[c].id, company: data[c].company })%>">
+		<%=data[c].subject%>
+		</a>
+		<%=data[c].to%>
+		<%=data[c].body
+		%>
+		</div>
+	<%
+}
+%>
+
+</div>
