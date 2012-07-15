@@ -23,20 +23,19 @@ sizlate.classifyKeys = function(data, options) {
 	return retArray;
 };
 
-
 app.configure(function(){
     app.use(express.methodOverride());
     app.use(express.bodyParser());
     app.use(app.router);
-
   app.set('dirname', __dirname);
 });
 
 app.enable("jsonp callback"); // enable jsonp
 
-
 app.register('.html', sizlate);
 app.register('.ejs', ejs);
+
+app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
  app.get(urls.HOME, function(req, res, next) {
     res.render('home.html', {
@@ -50,8 +49,24 @@ app.get(urls.EMAIL, function(req, res, next) {
         id: req.params.id
     }, function(data) {
     console.log(encoder);
-//        data = sizlate.classifyKeys(data);
         res.render('email.ejs', { layout:false, mail: data[0], encoder: encoder.encoder});
+    });
+});
+
+
+
+
+app.post(urls.SEARCH, function(req, res, next) {
+    ds.company({
+        term: req.body.term
+    }, function(data) {
+    console.log(data);
+//        data = sizlate.classifyKeys(data);
+        if(data.length > 0) {
+            res.render('search.ejs', {  data: data, urls: urls});
+        }else {
+            res.render('search-no-results.ejs', { data: data, urls: urls});
+        }
     });
 });
 
