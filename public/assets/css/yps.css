@@ -1,11 +1,40 @@
+@font-face {
+font-family: ch;
+src: local('Claire Hand')
+}
+
+@font-face {
+font-family: ot;
+src: local('Scuba OT')
+}
+
+@font-face {
+font-family: fi;
+src: local('ChunkFive')
+}
+
+
+
 body {
 	background: url(/assets/img/45degreee_fabric.png);
 }
 #content {
+font-family: ot;
 	width: 700px;
 }
 
+.content {
+		background: rgba(150,150,150, 0.1);
+		padding: 15px;
+		margin: 5px 0;
+
+	border: 1px solid #eee;
+}
+p {
+	font-face: helvetica;
+}
 h1 {
+		font-family: fi;
 	padding : 20px 0;
 }
 #email {
@@ -18,9 +47,10 @@ h1 {
 
 	background: url(/assets/img/email.png) rgba(150,150,150, 0.1);
 	background-repeat: no-repeat;
+	background-position: bottom right;
 	height: 130px;
 	margin: 10px 0;
-	padding: 20px 10px 10px 150px;
+	padding: 10px 20px;
 	border: 1px solid #eee;
 }
 
