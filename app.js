@@ -41,8 +41,8 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
     res.render('home.ejs', {selected: 'home'});
 });
 
- app.get(urls.FAQ, function(req, res, next) {
-    res.render('faq.ejs', {selected: 'faq'});
+ app.get(urls.ABOUT, function(req, res, next) {
+    res.render('about.ejs', {selected: 'about'});
 });
 
  app.get(urls.CONTACT, function(req, res, next) {

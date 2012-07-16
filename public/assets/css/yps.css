@@ -1,9 +1,33 @@
+body {
+	background: url(/assets/img/45degreee_fabric.png);
+}
+#content {
+	width: 700px;
+}
+
+h1 {
+	padding : 20px 0;
+}
 .email {
 
-	background: url(/assets/img/email.png);
+	background: url(/assets/img/email.png) rgba(150,150,150, 0.1);
 	background-repeat: no-repeat;
 	height: 130px;
-	margin: 10px;
+	margin: 10px 0;
 	padding: 20px 10px 10px 150px;
 	border: 1px solid #eee;
+}
+
+.feature {
+	display:block;
+	font-size:2em;
+	margin:  30px 0;
+}
+.feature span {
+	padding: 5px 50px;
+	font-weight:bold;	
+	text-decoration:none;
+	border-radius: 5px;
+	background: #fff;
+	margin: 5px;
 }

@@ -46,7 +46,7 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="<%if(selected==='home'){%>active<%}%>"><a href="/">Home</a></li>
-              <li class="<%if(selected==='faq'){%>active<%}%>"><a href="/faq">FAQ</a></li>
+              <li class="<%if(selected==='about'){%>active<%}%>"><a href="/about">About</a></li>
               <li class="<%if(selected==='contact'){%>active<%}%>"><a href="/contact">Contact</a></li>
               <li class="<%if(selected==='browse'){%>active<%}%>"><a href="/browse">Browse</a></li>
 
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div id="content" class="container">
 
       <%-body%>
       <!-- Main hero unit for a primary marketing message or call to action -->
@@ -90,7 +90,18 @@
     <script src="/assets/js/bootstrap-collapse.js"></script>
     <script src="/assets/js/bootstrap-carousel.js"></script>
     <script src="/assets/js/bootstrap-typeahead.js"></script>
-
+    <script type="text/javascript">
+      var GoSquared={};
+      GoSquared.acct = "GSN-869317-R";
+      (function(w){
+        function gs(){
+          w._gstc_lt=+(new Date); var d=document;
+          var g = d.createElement("script"); g.type = "text/javascript"; g.async = true; g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+          var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(g, s);
+        }
+        w.addEventListener?w.addEventListener("load",gs,false):w.attachEvent("onload",gs);
+      })(window);
+    </script>
   </body>
 </html>
 
