@@ -8,6 +8,11 @@ body {
 h1 {
 	padding : 20px 0;
 }
+#email {
+	background: #fff;
+	border: 1px solid #eee;
+
+}
 .email {
 
 	background: url(/assets/img/email.png) rgba(150,150,150, 0.1);
