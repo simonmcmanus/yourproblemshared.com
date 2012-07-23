@@ -136,7 +136,7 @@ app.post(urls.INBOUND, function(req, res, next) {
         if(!headers) {
             return {};
         }
-        var c = header.length;
+        var c = headers.length;
         while(c--) {
             obj[headers[c].Name] = headers[c].Value;
         }
