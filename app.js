@@ -145,7 +145,7 @@ app.post(urls.INBOUND, function(req, res, next) {
 
     var headers = sortHeaders(req.body.Headers);
 
-    console.log(req.body);
+    console.log(headers);
     ds.saveEmail({
         toEmail: req.body.ToFull.Email,
         toName: req.body.ToFull.Name,
