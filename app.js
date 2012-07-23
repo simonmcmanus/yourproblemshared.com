@@ -133,6 +133,9 @@ app.post(urls.INBOUND, function(req, res, next) {
 
     var sortHeaders = function(headers) {
         var obj = {};
+        if(!headers) {
+            return;
+        }
         var c = header.length;
         while(c--) {
             obj[headers[c].Name] = headers[c].Value;
