@@ -129,17 +129,35 @@ var sendEmail = function(to, subject, body) {
     });
 };
 
-
 app.post(urls.INBOUND, function(req, res, next) {
-    //console.log(req.body);
+
+    var sortHeaders = function(headers) {
+        var obj = {};
+        var c = header.length;
+        while(c--) {
+            obj[headers[c].Name] = headers[c].Value;
+        }
+        return obj;
+    }
+
+    var headers = sortHeaders(req.body.Headers);
+
+    console.log(req.body);
     ds.saveEmail({
-        to: req.body.To,
-        from: req.body.From,
-        cc: req.body.Cc,
+        toEmail: req.body.ToFull.Email,
+        toName: req.body.ToFull.Name,
+        fromEmail: req.body.FromFull.Email,
+        replyTo: req.body.FromFull.replyTo,
+        fromName: req.body.ToFull.Name,
+        ccEmail: req.body.CcFull.Email,
+        ccName: req.body.CcFull.Email,
         subject: req.body.Subject,
         textBody:  req.body.TextBody,
         htmlBody:  req.body.HtmlBody,
-        date: req.body.Date 
+        date: req.body.Date,
+        inReplyToId: headers['In-Reply-To'],
+        messageId: headers['Message-ID'],
+        referenceId: headers['References']
     }, function(data) {
         if(data) {
             var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';

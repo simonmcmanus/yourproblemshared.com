@@ -20,7 +20,7 @@ body {
 }
 #content {
 font-family: ot;
-	width: 700px;
+	max-width: 700px;
 }
 
 .content {
@@ -48,9 +48,9 @@ h1 {
 	background: url(/assets/img/email.png) rgba(150,150,150, 0.1);
 	background-repeat: no-repeat;
 	background-position: bottom right;
-	height: 130px;
+	height: 80px;
 	margin: 10px 0;
-	padding: 10px 20px;
+	padding: 14px 20px;
 	border: 1px solid #eee;
 }
 
