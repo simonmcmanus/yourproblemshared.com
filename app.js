@@ -54,7 +54,7 @@ app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id
     }, function(data) {
-    console.log(data) ;
+        console.log(arguments) ;
         res.render('email.ejs', {  
             mail: data[0],
             selected: '',
