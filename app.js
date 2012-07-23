@@ -134,7 +134,7 @@ app.post(urls.INBOUND, function(req, res, next) {
     var sortHeaders = function(headers) {
         var obj = {};
         if(!headers) {
-            return;
+            return {};
         }
         var c = header.length;
         while(c--) {
@@ -158,9 +158,9 @@ app.post(urls.INBOUND, function(req, res, next) {
         textBody:  req.body.TextBody,
         htmlBody:  req.body.HtmlBody,
         date: req.body.Date,
-        inReplyToId: headers['In-Reply-To'],
-        messageId: headers['Message-ID'],
-        referenceId: headers['References']
+        inReplyToId: headers['In-Reply-To'] || "",
+        messageId: headers['Message-ID'] || "",
+        referenceId: headers['References'] || ""
     }, function(data) {
         if(data) {
             var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
