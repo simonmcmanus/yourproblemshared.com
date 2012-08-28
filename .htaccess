@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteRule ^$ http://yourproblemshared.com:8002/ [P]
+RewriteRule ^(.+) http://yourproblemshared.com:8002/$1 [P]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*) http://yourproblemshared.com:8002/$1 [P]
+
+
+

@@ -1,0 +1,22 @@
+<h1>Browse</h1>
+<div>
+
+<%
+console.log('urls', urls);
+var c = data.length;
+while(c--) {
+	%>
+		<div class="email">
+		<a href="<%=urls.get('EMAIL', { id: data[c].id, company: data[c].company })%>">
+		<h4><%=data[c].subject%></h4>
+		<h5>to:<%=data[c].to%></h5>
+		</a>
+
+		<%=data[c].textBody
+		%>
+		</div>
+	<%
+}
+%>
+
+</div>
