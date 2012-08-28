@@ -229,10 +229,10 @@ app.post(urls.INBOUND, function(req, res, next) {
         referenceId: headers['References'] || ""
     }, function(data) {
         if(data) {
-            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
+//            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
             //sendEmail(req.body.To, '');
             console.log(data);
-            sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:'+url);
+            sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
             res.send('ok');
         }
     });
