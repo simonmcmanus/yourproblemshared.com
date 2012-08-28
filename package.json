@@ -5,8 +5,7 @@
   "author": "Simon McManus <mcmanus.simon@gmail.com>",
   "dependencies": {
     "express": "2.3.x",
-    "mysql": "0.9.6",
-    "redis": "0.7.2"
+    "redis": "*"
   },
      "node": "0.8.x",
      "npm": "1.1.x"
