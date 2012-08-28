@@ -13,6 +13,9 @@ app.configure(function(){
   app.set('dirname', __dirname);
 });
 
+
+console.log(process.env);
+
 app.enable("jsonp callback"); // enable jsonp
 
 //app.register('.html', sizlate);
