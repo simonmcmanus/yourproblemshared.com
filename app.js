@@ -1,27 +1,10 @@
 var express = require('express');
-var ds = require('./lib/datastore.js');
+var ds = require('./lib/redis.js');
 var app = express.createServer();
-var sizlate = require('sizlate');
+//var sizlate = require('sizlate');
 var ejs = require('ejs');
 var urls = require('./lib/urls.js');
 var encoder = require('./lib/encoder.js');
-// todo - remove this hack - awaiting release of sizlate.
-sizlate.classifyKeys = function(data, options) {
-	if((options && !options.classifyKeys) || typeof data == "undefined"){
-		return data;
-	}
-	var c = data.length;
-	var retArray = [];
-	while(c--) {
-		var newObj = {};
-		for(var key in data[c]){
-			newObj['.'+key] = data[c][key];
-		}
-		retArray.push(newObj);
-	}
-	console.log(retArray);
-	return retArray;
-};
 
 app.configure(function(){
     app.use(express.methodOverride());
@@ -32,7 +15,7 @@ app.configure(function(){
 
 app.enable("jsonp callback"); // enable jsonp
 
-app.register('.html', sizlate);
+//app.register('.html', sizlate);
 app.register('.ejs', ejs);
 
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
@@ -172,11 +155,10 @@ app.post(urls.INBOUND, function(req, res, next) {
     });
 });
 
+app.listen( process.env.PORT || 8002);
+console.log('check out http://localhost:8002');
 
-sizlate.startup(app, function(app) {
-    app.listen(8002);
-    console.log('check out http://localhost:8002');
-});
+
 
 
 

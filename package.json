@@ -1,0 +1,12 @@
+{
+  "name": "best-practices",
+  "version": "0.1.1",
+  "description": "A package using versioning best-practices",
+  "author": "Simon McManus <mcmanus.simon@gmail.com>",
+  "dependencies": {
+    "express": "2.3.x",
+    "mysql": "0.9.6",
+    "redis": "0.7.2"
+  },
+  "engine": "node >= 0.4.1"
+}
