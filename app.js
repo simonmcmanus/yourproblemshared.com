@@ -212,6 +212,10 @@ app.post(urls.INBOUND, function(req, res, next) {
     var headers = sortHeaders(req.body.Headers);
 
     console.log(headers);
+
+    if(!req.bodyToFull) {
+        return;
+    }
     ds.saveEmail({
         toEmail: req.body.ToFull.Email,
         toName: req.body.ToFull.Name,
