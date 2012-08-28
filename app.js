@@ -214,7 +214,7 @@ app.post(urls.INBOUND, function(req, res, next) {
     console.log(headers);
 
     if(!req.bodyToFull) {
-        return;
+        res.send('ok');
     }
     ds.saveEmail({
         toEmail: req.body.ToFull.Email,
