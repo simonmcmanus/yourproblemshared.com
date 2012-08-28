@@ -6,7 +6,10 @@
   "dependencies": {
     "express": "2.3.x",
     "redis": "0.7.2",
-   "zlib": "*"
+    "mysql": "*",
+    "zlib": "*",
+    "ejs": "*"
+
   },
      "node": "0.8.x",
      "npm": "1.1.x"
