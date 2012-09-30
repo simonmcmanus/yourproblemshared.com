@@ -242,6 +242,8 @@ app.post(urls.INBOUND, function(req, res, next) {
     });
 });
 
+process.env.PORT = 3000;
+
 app.listen( process.env.PORT );
 console.log('check out http://localhost:'+process.env.PORT );
 
