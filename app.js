@@ -24,7 +24,7 @@ app.register('.ejs', ejs);
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
  app.get(urls.HOME, function(req, res, next) {
-    res.render('comingsoon.ejs', {selected: 'home', hideNav:});
+    res.render('comingsoon.ejs', {selected: 'home', hideNav:true});
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
