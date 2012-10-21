@@ -63,7 +63,6 @@ app.get(urls.EMAIL, function(req, res, next) {
 
 app.get(urls.BROWSE, function(req, res, next) {
     ds.browse({}, function(error, data) {
-    console.log(data);
 //        data = sizlate.classifyKeys(data);
         if(data.length > 0) {
             res.render('search.ejs', {  data: data.reverse(), urls: urls, selected: 'browse', hideNav: false});
@@ -228,6 +227,22 @@ app.post(urls.INBOUND, function(req, res, next) {
     if(!req.bodyToFull) {
         res.send('ok');
     }
+    console.log('sending: ', {
+        toEmail: req.body.ToFull.Email,
+        toName: req.body.ToFull.Name,
+        fromEmail: req.body.FromFull.Email,
+        replyTo: req.body.FromFull.replyTo,
+        fromName: req.body.ToFull.Name,
+        ccEmail: req.body.CcFull.Email,
+        ccName: req.body.CcFull.Email,
+        subject: req.body.Subject,
+        textBody:  req.body.TextBody,
+        htmlBody:  req.body.HtmlBody,
+        date: req.body.Date,
+        inReplyToId: headers['In-Reply-To'] || "",
+        messageId: headers['Message-ID'] || "",
+        referenceId: headers['References'] || ""
+    });
     ds.saveEmail({
         toEmail: req.body.ToFull.Email,
         toName: req.body.ToFull.Name,
