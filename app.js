@@ -68,7 +68,7 @@ app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id,
     }, function(error, data) {
-        res.render('email.ejs', {  
+        res.render('email.ejs', {
             mail: data,
             selected: '',
             hideNav: false, 

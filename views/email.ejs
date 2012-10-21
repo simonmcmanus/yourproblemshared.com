@@ -6,11 +6,12 @@
 
 <div id="email">
 	<%
-	var a = encoder.htmlDecode(mail.htmlBody);
-	//a = a.replace(new RegExp(mail.from, 'g'), '[details removed]');
-
-	//a = a.replace(new RegExp(mail.to, 'g'), '[details removed]');
-
+	var c = mail.length;
+	while(c--){
+		var a = encoder.htmlDecode(mail[c].htmlBody);
 	%>
 	<div class="body"><%-a%></div>
+	<%	
+	}
+	%>
 </div>

@@ -12,7 +12,7 @@ while(c--) {
 					<div class="email">
 			<a href="<%=urls.get('EMAIL', { id: data[c][l].id, company: data[c][l].company })%>">
 			<h4><%=data[c][l].subject%></h4>
-			<h5>to:<%=data[c][l].to%></h5>
+			<h5><%=data[c][l].toEmail%></h5>
 			</a>
 
 			<%=data[c][l].textBody%>
