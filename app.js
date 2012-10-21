@@ -227,22 +227,7 @@ app.post(urls.INBOUND, function(req, res, next) {
     if(!req.bodyToFull) {
         res.send('ok');
     }
-    console.log('sending: ', {
-        toEmail: req.body.ToFull.Email,
-        toName: req.body.ToFull.Name,
-        fromEmail: req.body.FromFull.Email,
-        replyTo: req.body.FromFull.replyTo,
-        fromName: req.body.ToFull.Name,
-        ccEmail: req.body.CcFull.Email,
-        ccName: req.body.CcFull.Email,
-        subject: req.body.Subject,
-        textBody:  req.body.TextBody,
-        htmlBody:  req.body.HtmlBody,
-        date: req.body.Date,
-        inReplyToId: headers['In-Reply-To'] || "",
-        messageId: headers['Message-ID'] || "",
-        referenceId: headers['References'] || ""
-    });
+    console.log('sending: ', req.body);
     ds.saveEmail({
         toEmail: req.body.ToFull.Email,
         toName: req.body.ToFull.Name,
@@ -263,7 +248,7 @@ app.post(urls.INBOUND, function(req, res, next) {
 //            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
             //sendEmail(req.body.To, '');
             console.log(data);
-            sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
+       //     sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
             res.send('ok');
         }
     });
