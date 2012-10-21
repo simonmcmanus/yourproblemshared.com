@@ -27,6 +27,11 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
     res.render('comingsoon.ejs', {selected: 'home', hideNav:true});
 });
 
+
+ app.get('/home',  function(req, res, next) {
+    res.render('home.ejs', {selected: 'home', hideNav:true});
+});
+
  app.get(urls.ABOUT, function(req, res, next) {
     res.render('about.ejs', {selected: 'about'});
 });
