@@ -68,7 +68,7 @@ app.get(urls.BROWSE, function(req, res, next) {
         if(data.length > 0) {
             res.render('search.ejs', {  data: data.reverse(), urls: urls, selected: 'browse', hideNav: false});
         }else {
-            res.render('search-no-results.ejs', {  urls: urls, hideNav: false});
+            res.render('search-no-results.ejs', {  urls: urls, hideNav: false, selected: 'browse'});
         }
     });
 });
