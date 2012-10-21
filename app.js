@@ -50,7 +50,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id
-    }, function(data) {
+    }, function(error, data) {
         console.log(arguments) ;
         res.render('email.ejs', {  
             mail: data[0],
