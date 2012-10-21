@@ -5,6 +5,7 @@
 console.log('urls', urls);
 var c = data.length;
 while(c--) {
+console.log('data is: ', data);
 	%>
 		<div class="email">
 		<a href="<%=urls.get('EMAIL', { id: data[c].id, company: data[c].company })%>">

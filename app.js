@@ -229,13 +229,13 @@ app.post(urls.INBOUND, function(req, res, next) {
     }
     console.log('sending: ', req.body);
     ds.saveEmail({
-        toEmail: req.body.ToFull.Email,
-        toName: req.body.ToFull.Name,
-        fromEmail: req.body.FromFull.Email,
-        replyTo: req.body.FromFull.replyTo,
-        fromName: req.body.ToFull.Name,
-        ccEmail: req.body.CcFull.Email,
-        ccName: req.body.CcFull.Email,
+        toEmail: req.body.ToFull.Email || 'No Email',
+        toName: req.body.ToFull.Name || 'No Name',
+        fromEmail: req.body.FromFull.Email || 'No from email',
+        replyTo: req.body.FromFull.replyTo || 'No reply to',
+        fromName: req.body.ToFull.Name || 'No from name',
+        ccEmail: req.body.CcFull.Email  || 'No cc email',
+        ccName: req.body.CcFull.Email  || 'No cc name',
         subject: req.body.Subject,
         textBody:  req.body.TextBody,
         htmlBody:  req.body.HtmlBody,
