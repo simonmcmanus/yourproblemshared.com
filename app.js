@@ -18,6 +18,27 @@ app.configure(function(){
 
 
 
+var opt = {    id: 'ID',
+    referenceId: 'asd',
+    toEmail: 'mcmanus.simon@gmail.com',
+    fromEmail: 'simon@gosquared.com',
+    ccEmail :'cc@yourproblemshared.com',
+    subject: 'coffee table',
+    messageId: '123',
+    date: '2',
+    htmlBody: 'bad coffee tabel bad bad bad',
+    textBody: 'bad coffee tabel bad bad bad',
+    inReplyToId: '321' ,
+    referenceId: '321', 
+    replyTo :'321',
+    toName :'Simon',
+    fromName : 'Simon',
+    ccName: 'CC'
+};
+ds.saveEmail(opt);
+
+
+
 app.enable("jsonp callback"); // enable jsonp
 
 //app.register('.html', sizlate);
@@ -138,12 +159,9 @@ app.post(urls.INBOUND, function(req, res, next) {
 
     var headers = sortHeaders(req.body.Headers);
 
-   // console.log(headers);
-
     if(!req.bodyToFull) {
         res.send('ok');
     }
-    console.log('sending: ', req.body);
     ds.saveEmail({
         id: req.body.MessageID,
         toEmail: req.body.ToFull[0].Email,
@@ -164,7 +182,7 @@ app.post(urls.INBOUND, function(req, res, next) {
         if(data) {
 //            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
             //sendEmail(req.body.To, '');
-            console.log(data);
+            //console.log(data);
        //     sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
             res.send('ok');
         }
