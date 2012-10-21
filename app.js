@@ -1,5 +1,7 @@
 var express = require('express');
 var ds = require('./lib/redis.js');
+
+
 var app = express.createServer();
 //var sizlate = require('sizlate');
 var ejs = require('ejs');
@@ -60,7 +62,7 @@ app.get(urls.EMAIL, function(req, res, next) {
 
 
 app.get(urls.BROWSE, function(req, res, next) {
-    ds.browse({}, function(data) {
+    ds.browse({}, function(error, data) {
     console.log(data);
 //        data = sizlate.classifyKeys(data);
         if(data.length > 0) {
