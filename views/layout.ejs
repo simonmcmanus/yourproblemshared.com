@@ -44,6 +44,9 @@
           </a>
           <a class="brand" href="/">YourProblemShared.com</a>
           <div class="nav-collapse">
+          <%
+          if(!hideNav){
+          %>
             <ul class="nav">
               <li class="<%if(selected==='home'){%>active<%}%>"><a href="/">Home</a></li>
               <li class="<%if(selected==='about'){%>active<%}%>"><a href="/about">About</a></li>
@@ -54,6 +57,10 @@
 <form class="navbar-search pull-left" action="/company/search/" method="post">
             <input type="text" name="term" class="search-query span2" placeholder="Search">
           </form>
+
+          <%
+          }
+          %>
 
           </div><!--/.nav-collapse -->
         </div>

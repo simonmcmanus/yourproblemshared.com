@@ -8,6 +8,7 @@ var encoder = require('./lib/encoder.js');
 
 app.configure(function(){
     app.use(express.methodOverride());
+    app.set('port', process.env.PORT || 3000);
     app.use(express.bodyParser());
     app.use(app.router);
   app.set('dirname', __dirname);
@@ -23,7 +24,7 @@ app.register('.ejs', ejs);
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
  app.get(urls.HOME, function(req, res, next) {
-    res.render('home.ejs', {selected: 'home'});
+    res.render('comingsoon.ejs', {selected: 'home', hideNav: true});
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
@@ -244,8 +245,8 @@ app.post(urls.INBOUND, function(req, res, next) {
 
 //process.env.PORT = 3000;
 
-app.listen( process.env.PORT );
-console.log('check out http://localhost:'+process.env.PORT );
+app.listen(3000 );
+console.log('check out http://localhost:3000' );
 
 
 
