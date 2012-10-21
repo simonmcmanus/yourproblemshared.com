@@ -18,24 +18,24 @@ app.configure(function(){
 
 
 
-var opt = {    id: 'ID',
-    referenceId: 'asd',
-    toEmail: 'mcmanus.simon@gmail.com',
-    fromEmail: 'simon@gosquared.com',
-    ccEmail :'cc@yourproblemshared.com',
-    subject: 'coffee table',
-    messageId: '123',
-    date: '2',
-    htmlBody: 'bad coffee tabel bad bad bad',
-    textBody: 'bad coffee tabel bad bad bad',
-    inReplyToId: '321' ,
-    referenceId: '321', 
-    replyTo :'321',
-    toName :'Simon',
-    fromName : 'Simon',
-    ccName: 'CC'
-};
-ds.saveEmail(opt);
+// var opt = {    id: 'ID',
+//     referenceId: 'asd',
+//     toEmail: 'mcmanus.simon@gmail.com',
+//     fromEmail: 'simon@gosquared.com',
+//     ccEmail :'cc@yourproblemshared.com',
+//     subject: 'coffee table',
+//     messageId: '123',
+//     date: '2',
+//     htmlBody: 'bad coffee tabel bad bad bad',
+//     textBody: 'bad coffee tabel bad bad bad',
+//     inReplyToId: '321' ,
+//     referenceId: '321', 
+//     replyTo :'321',
+//     toName :'Simon',
+//     fromName : 'Simon',
+//     ccName: 'CC'
+// };
+// ds.saveEmail(opt);
 
 
 
@@ -164,9 +164,9 @@ app.post(urls.INBOUND, function(req, res, next) {
     }
     ds.saveEmail({
         id: req.body.MessageID,
-        toEmail: req.body.ToFull[0].Email,
-        toName: req.body.ToFull[0].Name,
-        fromEmail: req.body.FromFull[0].Email,
+        toEmail: req.body.To,
+//        toName: req.body.ToFull[0].Name,
+        fromEmail: req.body.From,
         replyTo: req.body.FromFull.replyTo,
         fromName: req.body.FromFull.Name,
         ccEmail: req.body.CcFull.Email,
