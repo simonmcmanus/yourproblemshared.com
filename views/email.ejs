@@ -4,14 +4,13 @@
 	If you would like to share your problems you can do the same.
 </div>
 
-<div id="email">
 	<%
 	var c = mail.length;
 	while(c--){
 		var a = encoder.htmlDecode(mail[c].htmlBody);
 	%>
+<div id="email">
 	<div class="body"><%-a%></div>
-	<%	
+</div>	<%	
 	}
 	%>
-</div>

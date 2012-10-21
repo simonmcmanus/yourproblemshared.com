@@ -17,28 +17,6 @@ app.configure(function(){
 });
 
 
-
-// var opt = {    id: 'ID',
-//     referenceId: 'asd',
-//     toEmail: 'mcmanus.simon@gmail.com',
-//     fromEmail: 'simon@gosquared.com',
-//     ccEmail :'cc@yourproblemshared.com',
-//     subject: 'coffee table',
-//     messageId: '123',
-//     date: '2',
-//     htmlBody: 'bad coffee tabel bad bad bad',
-//     textBody: 'bad coffee tabel bad bad bad',
-//     inReplyToId: '321' ,
-//     referenceId: '321', 
-//     replyTo :'321',
-//     toName :'Simon',
-//     fromName : 'Simon',
-//     ccName: 'CC'
-// };
-// ds.saveEmail(opt);
-
-
-
 app.enable("jsonp callback"); // enable jsonp
 
 //app.register('.html', sizlate);
@@ -67,9 +45,9 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id,
-    }, function(error, data) {
+    }, function(error, email, replies) {
         res.render('email.ejs', {
-            mail: data,
+            mail: [email].concat(replies),
             selected: '',
             hideNav: false, 
              encoder: encoder.encoder
@@ -132,7 +110,7 @@ app.get(urls.COMPANY , function(req, res, next) {
 
 var sendEmail = function(to, subject, body) {
     // send email to 
-    var postmark = require("postmark-api")('0193ddc8-91db-4e04-8569-72a9fe5a8c93');
+    var postmark = require("postmark-api")('d64bdb29-b589-4584-8964-23f5d7e4a614');
     postmark.send({
         From: 'cc@yourproblemshared.com',
         To: to,
@@ -183,7 +161,7 @@ app.post(urls.INBOUND, function(req, res, next) {
 //            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
             //sendEmail(req.body.To, '');
             //console.log(data);
-       //     sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
+           sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
             res.send('ok');
         }
     });
