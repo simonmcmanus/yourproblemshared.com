@@ -8,12 +8,11 @@
     "redis": "0.7.2",
     "mysql": "*",
     "zlib": "*",
-    "ejs": "*"
-
+    "ejs": "*",
+    "postmark-api": "~0.2.0"
   },
   "engines": {
-     "node": "0.8.x",
-     "npm": "1.1.x"
+    "node": "0.8.x",
+    "npm": "1.1.x"
   }
 }
-
