@@ -1,3 +1,4 @@
+// need to be able to indentify whnen a new email comes in if we have alerady sent out email re this topic.
 var express = require('express');
 var ds = require('./lib/redis.js');
 
@@ -161,6 +162,7 @@ app.post(urls.INBOUND, function(req, res, next) {
 //            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
             //sendEmail(req.body.To, '');
             //console.log(data);
+            console.log('SENDING EMAIL');
            sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
             res.send('ok');
         }
