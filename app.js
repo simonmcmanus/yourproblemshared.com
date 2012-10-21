@@ -49,8 +49,9 @@ app.get(urls.EMAIL, function(req, res, next) {
     }, function(error, data) {
         console.log(arguments) ;
         res.render('email.ejs', {  
-            mail: data[0],
+            mail: data,
             selected: '',
+            hideNav: false, 
              encoder: encoder.encoder});
     });
 });
