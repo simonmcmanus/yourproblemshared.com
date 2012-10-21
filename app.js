@@ -34,10 +34,6 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
     res.render('home.ejs', {selected: 'home', hideNav:true});
 });
 
- app.get('/google308bac62a59ff982.html', function(req, res) {
-    res.send('google-site-verification: google308bac62a59ff982.html');
- } );
-
  app.get(urls.ABOUT, function(req, res, next) {
     res.render('about.ejs', {selected: 'about'});
 });
