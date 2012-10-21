@@ -24,7 +24,7 @@ app.register('.ejs', ejs);
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
  app.get(urls.HOME, function(req, res, next) {
-    res.render('comingsoon.ejs', {selected: 'home', hideNav: true});
+    res.render('comingsoon.ejs', {selected: 'home', hideNav:});
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
@@ -245,7 +245,7 @@ app.post(urls.INBOUND, function(req, res, next) {
 
 //process.env.PORT = 3000;
 
-app.listen(3000 );
+app.listen(process.env.PORT || 3000 );
 console.log('check out http://localhost:3000' );
 
 
