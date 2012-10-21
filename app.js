@@ -158,13 +158,13 @@ app.post(urls.INBOUND, function(req, res, next) {
         messageId: headers['Message-ID'] || "",
         referenceId: headers['References'] || ""
     }, function(data) {
+            console.log('SENDING EMAIL');
+           sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
+            res.send('ok');
         if(data) {
 //            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
             //sendEmail(req.body.To, '');
             //console.log(data);
-            console.log('SENDING EMAIL');
-           sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
-            res.send('ok');
         }
     });
 });
