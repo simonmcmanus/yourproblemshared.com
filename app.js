@@ -35,11 +35,11 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
-    res.render('about.ejs', {selected: 'about'});
+    res.render('about.ejs', {selected: 'about', hideNav: false});
 });
 
  app.get(urls.CONTACT, function(req, res, next) {
-    res.render('contact.ejs', {selected: 'contact'});
+    res.render('contact.ejs', {selected: 'contact', hideNav: false});
 });
 
 
@@ -47,11 +47,14 @@ app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id,
     }, function(error, email, replies) {
+        console.log('////`>', replies.length);
+        replies.push(email);
+        console.log('////`>', replies[replies.length-1]);
         res.render('email.ejs', {
-            mail: [email].concat(replies),
+            mail: replies,
             selected: '',
             hideNav: false, 
-             encoder: encoder.encoder
+            encoder: encoder.encoder
         });
     });
 });
