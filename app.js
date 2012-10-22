@@ -1,4 +1,11 @@
+
+
+
 // need to be able to indentify whnen a new email comes in if we have alerady sent out email re this topic.
+
+
+
+
 var express = require('express');
 var ds = require('./lib/redis.js');
 
