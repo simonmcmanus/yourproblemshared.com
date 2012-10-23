@@ -5,10 +5,11 @@
   "author": "Simon McManus <mcmanus.simon@gmail.com>",
   "dependencies": {
     "express": "2.3.x",
-    "redis": "0.7.2".7.2",
+    "redis": "0.7.2",
     "zlib": "*",
     "ejs": "*",
-    "postmark-api": "~0.2.0"
+    "postmark-api": "~0.2.0",
+    "mysql": "~0.9.6"
   },
   "engines": {
     "node": "0.8.x",
