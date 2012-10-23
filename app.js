@@ -8,7 +8,7 @@
 
 var express = require('express');
 //var ds = require('./lib/redis.js');
-var ds = require('./lib/.js');
+var ds = require('./lib/mysql.js');
 
 var app = express.createServer();
 //var sizlate = require('sizlate');
