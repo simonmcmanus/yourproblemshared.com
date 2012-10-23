@@ -151,6 +151,7 @@ app.post(urls.INBOUND, function(req, res, next) {
     if(!req.bodyToFull) {
         res.send('ok');
     }
+    console.log('BOUT TO SEND');
     ds.saveEmail({
         id: req.body.MessageID,
         toEmail: req.body.To,
