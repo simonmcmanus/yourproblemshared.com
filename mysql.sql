@@ -43,6 +43,7 @@ DROP TABLE IF EXISTS `email`;
 CREATE TABLE `email` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `toEmail` varchar(45) DEFAULT NULL,
+  `fromEmail` varchar(45) DEFAULT NULL,
   `ccEmail` varchar(45) DEFAULT NULL,
   `subject` varchar(45) DEFAULT NULL,
   `messageId` varchar(45) DEFAULT NULL,
@@ -51,7 +52,7 @@ CREATE TABLE `email` (
   `htmlBody` blob DEFAULT NULL,
   `textBody` blob DEFAULT NULL,
   `inReplyToId` varchar(45) DEFAULT NULL,
-  `referenceId` varchar(45) DEFAULT NULL,
+  `referenceId` blob DEFAULT NULL,
 
   `body` varchar(45) DEFAULT NULL,
   `replyTo` varchar(45) DEFAULT NULL,

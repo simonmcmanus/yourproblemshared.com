@@ -5,22 +5,17 @@
 console.log('urls', urls);
 var c = data.length;
 while(c--) {
-		var emails = data[c];
-		var l = emails.length;
-		while(l--){
+		var email = data[c];
 			%>
 					<div class="email">
-			<a href="<%=urls.get('EMAIL', { id: data[c][l].id, company: data[c][l].company })%>">
-			<h4><%=data[c][l].subject%></h4>
-			<h5><%=data[c][l].toEmail%></h5>
+			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
+			<h4><%=encoder.htmlDecode(unescape(email.subject))%></h4>
+			<h5><%=encoder.htmlDecode(unescape(email.toEmail))%></h5>
 			</a>
 
-			<%=data[c][l].textBody%>
+			<%=encoder.htmlDecode(unescape(email.textBody))%>
 			</div>
-
-		<%
-		}
-%><hr />	<%
+<hr />	<%
 }
 %>
 

@@ -53,10 +53,8 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id,
-    }, function(error, email, replies) {
-        console.log('////`>', replies.length);
-        replies.push(email);
-        console.log('////`>', replies[replies.length-1]);
+    }, function(replies) {
+//        replies.push(email);
         res.render('email.ejs', {
             mail: replies,
             selected: '',
@@ -69,12 +67,21 @@ app.get(urls.EMAIL, function(req, res, next) {
 
 
 app.get(urls.BROWSE, function(req, res, next) {
-    ds.browse({}, function(error, data) {
-//        data = sizlate.classifyKeys(data);
+    ds.browse({}, function(data) {
         if(data.length > 0) {
-            res.render('search.ejs', {  data: data.reverse(), urls: urls, selected: 'browse', hideNav: false});
+            res.render('search.ejs', {  
+                data: data.reverse(),
+                urls: urls, 
+                selected: 'browse', 
+                hideNav: false,
+                encoder: encoder.encoder
+            });
         }else {
-            res.render('search-no-results.ejs', {  urls: urls, hideNav: false, selected: 'browse'});
+            res.render('search-no-results.ejs', {  
+                urls: urls, 
+                hideNav: false, 
+                selected: 'browse'
+            });
         }
     });
 });
