@@ -42,6 +42,7 @@ DROP TABLE IF EXISTS `email`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `email` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `isFirst` boolean DEFAULT NULL,
   `toEmail` varchar(45) DEFAULT NULL,
   `fromEmail` varchar(45) DEFAULT NULL,
   `ccEmail` varchar(45) DEFAULT NULL,
