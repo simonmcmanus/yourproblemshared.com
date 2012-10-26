@@ -4,6 +4,11 @@ src: local('Claire Hand')
 }
 
 @font-face {
+font-family: sf;
+src: local('SciFly')
+}
+
+@font-face {
 font-family: ot;
 src: local('Scuba OT')
 }
@@ -21,6 +26,39 @@ font-weight:400;
 }
 
 
+html body .navbar-inner {
+	font-family: 'freight-sans-pro';
+	border-radius: 4px !important;
+	max-width: 730px;
+	color: #333;
+	margin: 20px 20% 0;
+	background: #FAFAF5;
+	box-shadow:none;
+	webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+-ie-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ie-border-radius: 4px;
+border-radius: 4px;
+border-bottom: 0 !important;
+padding:0 !important;
+}
+html body .navbar .nav > li.active a, 
+html body .navbar .nav > li.active a:hover {
+	background: #fff;
+}
+html body .navbar .nav > li > a {
+	height: 2.2em;
+	line-height: 2.1em;
+	border-radius: 0;
+
+  	border-radius: 0px;
+  	color: #2E3549 !important;
+  	font-weight: bold;
+border-right: 1px solid rgba(0, 0, 0, 0.18);
+}
 
 .navbar-fixed-top, .navbar-fixed-bottom {
 	position: relative;
@@ -46,7 +84,37 @@ box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
 -moz-border-radius: 4px;
 -ie-border-radius: 4px;
 border-radius: 4px;
+position: relative;
 }
+
+#content::before {
+content: "";
+position: absolute;
+left: 50px;
+top: -15px;
+border-width: 0px 15px 15px 15px;
+border-style: solid;
+border-color: #adada8 transparent;
+display: block;
+width: 0;
+
+
+}
+#content::after {
+content: "";
+position: absolute;
+left: 50px;
+top: -13.6px;
+border-width: 0px 15px 15px 15px;
+border-style: solid;
+border-color: #FAFAF5 transparent;
+display: block;
+width: 0;
+
+
+}
+
+
 
 .content {
 	margin: 5px 0;
@@ -116,13 +184,6 @@ h1 {
 }
 
 
-  html body .navbar-inner {
-
-	background: #343434;
-  	border-bottom: 1px solid #222;
-  	padding: 15px 0 0 0;
-  }
-
   .navbar .nav > li > a {
   	text-shadow: none;
   }
@@ -135,13 +196,7 @@ h1 {
   	padding: 5px 15px !important;  	
   }
 
-  li.active  a{
-  	border-radius: 5px;
-  	color: #fff !important;
-  	font-weight: bold;
-  	background : rgba(0, 0, 0, 0.2) !important;
 
-  }
 
 
   div.navbar .brand {
