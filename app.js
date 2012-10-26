@@ -187,21 +187,19 @@ app.post(urls.INBOUND, function(req, res, next) {
                 fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
 
                 var body = ejs.render(data, {
-                    company: 'Google',
-                     url: 'http://google.com'
+                    company: site,
+                     url: url
                 });
-                console.log('>>>', body);
-                    sendEmail(req.body.From, 'Relax, your problem has been shared', body);
-                // });
+                sendEmail(req.body.From, 'Relax, your problem has been shared', body);
+                });
 
                 
-                // fs.readFile('./views/emails/site-problem-reported.html', 'utf8', function(error, data) {
-                //     console.log(data);
-                //     var body = ejs.render(data, {
-                //         site: 'Google',
-                //          url: 'http://google.com'
-                //     });
-                //     sendEmail(req.body.From, 'ACTION REQUIRED', body);
+                fs.readFile('./views/emails/site-problem-reported.html', 'utf8', function(error, data) {
+                    var body = ejs.render(data, {
+                        company: 'Google',
+                         url: url
+                    });
+                    sendEmail(req.body.To, 'ACTION REQUIRED', body);
                  });
 
             }
