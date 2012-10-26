@@ -51,13 +51,11 @@ CREATE TABLE `email` (
   `subject` varchar(450) DEFAULT NULL,
   `messageId` blob DEFAULT NULL,
   `date` varchar(450) DEFAULT NULL,
-
   `htmlBody` blob DEFAULT NULL,
   `textBody` blob DEFAULT NULL,
   `inReplyToId` varchar(450) DEFAULT NULL,
   `referenceId` blob DEFAULT NULL,
-
-  `body` blob @DEFAULT NULL,
+  `body` blob DEFAULT NULL,
   `replyTo` varchar(450) DEFAULT NULL,
   `toName` varchar(450) DEFAULT NULL,
   `fromName` varchar(450) DEFAULT NULL,
