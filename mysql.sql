@@ -47,7 +47,7 @@ CREATE TABLE `email` (
   `fromEmail` varchar(45) DEFAULT NULL,
   `ccEmail` varchar(45) DEFAULT NULL,
   `subject` varchar(45) DEFAULT NULL,
-  `messageId` varchar(45) DEFAULT NULL,
+  `messageId` blob DEFAULT NULL,
   `date` varchar(45) DEFAULT NULL,
 
   `htmlBody` blob DEFAULT NULL,
