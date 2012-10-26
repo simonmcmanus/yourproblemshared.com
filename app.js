@@ -188,6 +188,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                 var url = 'http://yourproblemshared.com/'+site+'/mail/'+data.insertId+'/';
 
                 fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
+                    console.log(data);
                     var body = ejs.render(data, {
                         site: site,
                          url: url
@@ -197,6 +198,7 @@ app.post(urls.INBOUND, function(req, res, next) {
 
                 
                 fs.readFile('./views/emails/site-problem-reported.html', 'utf8', function(error, data) {
+                    console.log(data);
                     var body = ejs.render(data, {
                         site: site,
                          url: url
