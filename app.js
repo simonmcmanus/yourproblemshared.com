@@ -185,22 +185,20 @@ app.post(urls.INBOUND, function(req, res, next) {
             if(+isFirst) {
                 var url = 'http://yourproblemshared.com/'+site+'/mail/'+data.insertId+'/';
                 fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
-
-                var body = ejs.render(data, {
-                    company: site,
-                     url: url
-                });
-                sendEmail(req.body.From, 'Relax, your problem has been shared', body);
-                });
-
-                
-                fs.readFile('./views/emails/site-problem-reported.html', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
-                        company: 'Google',
+                        company: site,
                          url: url
                     });
-                    sendEmail(req.body.To, 'ACTION REQUIRED', body);
-                 });
+                    sendEmail(req.body.From, 'Relax, your problem has been shared', body);
+                });
+
+                fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
+                    var body = ejs.render(data, {
+                        company: site,
+                         url: url
+                    });
+                    sendEmail(req.body.From, 'Relax, your problem has been shared', body);
+                });
 
             }
             res.send('ok');
