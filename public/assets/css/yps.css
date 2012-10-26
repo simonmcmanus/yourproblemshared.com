@@ -185,35 +185,35 @@ h2 {
 	margin-top: 0;
 	padding-top: 0;	
 }
+
+h4 {
+	margin: 0;
+	padding: 0 !important;
+}
 #email {
 	padding: 10px;
 	background: #fff;
 	border: 1px solid #eee;
+	margin-bottom: 15px;
 
 }
 
 
 .floatRight {
 	float:right;
-	top: 0;
-	right:0;
+	top: 5px;
+	right:5px;
 	position:absolute;
 }
 
 .email {
 	position: relative;
-	height: 80px;
 	margin: 15px 0;
 	padding: 10px 10px;
-	border: 1px solid #Dedede;
-	background: -moz-linear-gradient(top, #ffffff 64%, #f7f7f7 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(64%,#ffffff), color-stop(100%,#f7f7f7)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #ffffff 64%,#f7f7f7 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #ffffff 64%,#f7f7f7 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #ffffff 64%,#f7f7f7 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #ffffff 64%,#f7f7f7 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */
-	background-repeat: no-repeat;
+	border:1px solid rgba(0, 0, 0, 0.1);
+	box-shadow: inset 2px 2px 1px #FAFAF5;
+	border-radius: 4px;
+background: #fff;	background-repeat: no-repeat;
 	background-position: bottom right;
 }
 

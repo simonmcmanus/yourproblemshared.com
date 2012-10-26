@@ -11,7 +11,7 @@ while(c--) {
 		var email = data[c];
 			%>
 					<div class="email">
-										<!--<img src="/assets/img/email.png" class="floatRight">-->
+										<img src="/assets/img/email.png" class="floatRight">
 
 			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
 			<h4><%=encoder.htmlDecode(unescape(email.subject))%></h4>
