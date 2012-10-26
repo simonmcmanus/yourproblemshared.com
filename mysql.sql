@@ -55,7 +55,7 @@ CREATE TABLE `email` (
   `inReplyToId` varchar(45) DEFAULT NULL,
   `referenceId` blob DEFAULT NULL,
 
-  `body` varchar(45) DEFAULT NULL,
+  `body` blob DEFAULT NULL,
   `replyTo` varchar(45) DEFAULT NULL,
   `toName` varchar(45) DEFAULT NULL,
   `fromName` varchar(45) DEFAULT NULL,

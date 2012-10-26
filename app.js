@@ -158,7 +158,9 @@ app.post(urls.INBOUND, function(req, res, next) {
     if(!req.bodyToFull) {
         res.send('ok');
     }
-    console.log('BOUT TO SEND');
+    console.log('BOUT TO SEND', req.body.ToFull[0].Name, req.body.ToFull[0].Email);
+
+
     ds.saveEmail({
         id: req.body.MessageID,
         toEmail: req.body.To,
@@ -176,13 +178,12 @@ app.post(urls.INBOUND, function(req, res, next) {
         messageId: headers['Message-ID'] || "",
         referenceId: headers['References'] || ""
     }, function(data) {
-            console.log('SENDING EMAIL');
-           sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:');
-            res.send('ok');
         if(data) {
-//            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
-            //sendEmail(req.body.To, '');
-            //console.log(data);
+            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
+            console.log('SENDING EMAIL');
+            sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:'+url);
+            res.send('ok');
+
         }
     });
 });
