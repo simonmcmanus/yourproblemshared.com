@@ -42,24 +42,26 @@ DROP TABLE IF EXISTS `email`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `email` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company` varchar(400) DEFAULT NULL,
+  
   `isFirst` boolean DEFAULT NULL,
-  `toEmail` varchar(45) DEFAULT NULL,
-  `fromEmail` varchar(45) DEFAULT NULL,
-  `ccEmail` varchar(45) DEFAULT NULL,
-  `subject` varchar(45) DEFAULT NULL,
+  `toEmail` varchar(500) DEFAULT NULL,
+  `fromEmail` varchar(450) DEFAULT NULL,
+  `ccEmail` varchar(450) DEFAULT NULL,
+  `subject` varchar(450) DEFAULT NULL,
   `messageId` blob DEFAULT NULL,
-  `date` varchar(45) DEFAULT NULL,
+  `date` varchar(450) DEFAULT NULL,
 
   `htmlBody` blob DEFAULT NULL,
   `textBody` blob DEFAULT NULL,
-  `inReplyToId` varchar(45) DEFAULT NULL,
+  `inReplyToId` varchar(450) DEFAULT NULL,
   `referenceId` blob DEFAULT NULL,
 
   `body` blob @DEFAULT NULL,
-  `replyTo` varchar(45) DEFAULT NULL,
-  `toName` varchar(45) DEFAULT NULL,
-  `fromName` varchar(45) DEFAULT NULL,
-  `ccName` varchar(45) DEFAULT NULL,
+  `replyTo` varchar(450) DEFAULT NULL,
+  `toName` varchar(450) DEFAULT NULL,
+  `fromName` varchar(450) DEFAULT NULL,
+  `ccName` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
