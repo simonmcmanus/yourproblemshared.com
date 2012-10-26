@@ -9,6 +9,7 @@
 var express = require('express');
 //var ds = require('./lib/redis.js');
 var ds = require('./lib/mysql.js');
+var fs = require('fs');
 
 var app = express.createServer();
 //var sizlate = require('sizlate');
@@ -23,6 +24,7 @@ app.configure(function(){
     app.use(app.router);
   app.set('dirname', __dirname);
 });
+
 
 
 app.enable("jsonp callback"); // enable jsonp
@@ -159,10 +161,10 @@ app.post(urls.INBOUND, function(req, res, next) {
         res.send('ok');
     }
 
-    var company = req.body.ToFull[0].Email.split('@')[1];
+    var site = req.body.ToFull[0].Email.split('@')[1];
     ds.saveEmail({
         id: req.body.MessageID,
-        company: company,
+        company: site,
         toEmail: req.body.ToFull[0].Email,
         toName: req.body.ToFull[0].Name,
         fromEmail: req.body.FromFull.Email,
@@ -178,15 +180,29 @@ app.post(urls.INBOUND, function(req, res, next) {
         messageId: headers['Message-ID'] || "",
         referenceId: headers['References'] || ""
     }, function(data, isFirst) {
+
         console.log('>>>', arguments);
         // only if its the first time. 
         if(data) {
             if(+isFirst) {
-                var url = 'http://yourproblemshared.com/'+company+'/mail/'+data.insertId+'/';
-                sendEmail(req.body.From, 'Relax, your problem has been shared', 
-                    'Here is the address:'+url+
-                    '\n \n If you have any comments or suggestions please send them to info@yourproblemshared.com'
-                );
+                var url = 'http://yourproblemshared.com/'+site+'/mail/'+data.insertId+'/';
+
+                fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
+                    var body = ejs.render(data, {
+                        site: site,
+                         url: url
+                    });
+                    sendEmail(req.body.From, 'Relax, your problem has been shared', body);
+                });
+
+                
+                fs.readFile('./views/emails/site-problem-reported.html', 'utf8', function(error, data) {
+                    var body = ejs.render(data, {
+                        site: site,
+                         url: url
+                    });
+                    sendEmail(req.body.From, 'ACTION REQUIRED', body);
+                });
 
             }
             res.send('ok');
