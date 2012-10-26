@@ -21,6 +21,7 @@ font-weight:400;
 }
 
 
+
 .navbar-fixed-top, .navbar-fixed-bottom {
 	position: relative;
 }
@@ -33,19 +34,29 @@ body {
 	max-width: 700px;
 }
 
+#content {
+	margin-top: 60px;
+	padding: 20px;
+	background: #FAFAF5;
+	-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+-ie-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+-ie-border-radius: 4px;
+border-radius: 4px;
+}
+
 .content {
-		background: #FAFAF5;
-
-		margin: 5px 0;
-
-	border: 1px solid #eee;
+	margin: 5px 0;
 }
 p {
 	font-face: helvetica;
 }
 h1 {
 	font-family:'freight-sans-pro';
-	padding : 40px 0;
+	padding : 0 0 13px 0;
 	font-weight: bolder;
 	font-size: 3.4em;
 	color:  #2E3549;;
@@ -56,15 +67,30 @@ h1 {
 	border: 1px solid #eee;
 
 }
-.email {
 
-	background: url(/assets/img/email.png) #FAFAF5;
+
+.floatRight {
+	float:right;
+	top: 0;
+	right:0;
+	position:absolute;
+}
+
+.email {
+	position: relative;
+	height: 80px;
+	margin: 15px 0;
+	padding: 10px 10px;
+	border: 1px solid #Dedede;
+	background: -moz-linear-gradient(top, #ffffff 64%, #f7f7f7 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(64%,#ffffff), color-stop(100%,#f7f7f7)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 64%,#f7f7f7 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 64%,#f7f7f7 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 64%,#f7f7f7 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 64%,#f7f7f7 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */
 	background-repeat: no-repeat;
 	background-position: bottom right;
-	height: 80px;
-	margin: 10px 0;
-	padding: 14px 20px;
-	border: 1px solid #eee;
 }
 
 .feature {

@@ -8,14 +8,17 @@ while(c--) {
 		var email = data[c];
 			%>
 					<div class="email">
+										<img src="/assets/img/email.png" class="floatRight">
+
 			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
 			<h4><%=encoder.htmlDecode(unescape(email.subject))%></h4>
 			<h5><%=encoder.htmlDecode(unescape(email.toEmail))%></h5>
 			</a>
 
 			<%=encoder.htmlDecode(unescape(email.textBody))%>
+
 			</div>
-<hr />	<%
+<%
 }
 %>
 
