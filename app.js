@@ -178,9 +178,14 @@ app.post(urls.INBOUND, function(req, res, next) {
         messageId: headers['Message-ID'] || "",
         referenceId: headers['References'] || ""
     }, function(data) {
+        console.log('>>>', arguments);
+        // only if its the first time. 
         if(data) {
             var url = 'http://yourproblemshared.com/'+company+'/mail/'+data.insertId+'/';
-            sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:'+url);
+            sendEmail(req.body.From, 'Relax, your problem has been shared', 
+                'Here is the address:'+url+
+                '<br /> If you have any comments or suggestions please send them to info@yourproblemshared.com'
+            );
             res.send('ok');
 
         }
