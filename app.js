@@ -193,7 +193,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                 // });
 
                 fs.readFile('./views/emails/site-problem-reported.html', 'utf8', function(error, data) {
-                    console.log(arguments);
+                    console.log('>>>',arguments);
                     var body = ejs.render(data, {
                         company: site,
                          url: url
