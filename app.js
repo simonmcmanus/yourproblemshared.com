@@ -163,10 +163,10 @@ app.post(urls.INBOUND, function(req, res, next) {
 
     ds.saveEmail({
         id: req.body.MessageID,
-        toEmail: req.body.To,
-//        toName: req.body.ToFull[0].Name,
-        fromEmail: req.body.From,
-        replyTo: req.body.FromFull.replyTo,
+        toEmail: req.body.ToFull[0].Email,
+        toName: req.body.ToFull[0].Name,
+        fromEmail: req.body.FromFull.Email,
+        replyTo: req.body.replyTo,
         fromName: req.body.FromFull.Name,
         ccEmail: req.body.CcFull.Email,
         ccName: req.body.CcFull.Email,
