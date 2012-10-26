@@ -35,20 +35,20 @@ app.register('.ejs', ejs);
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
  app.get(urls.HOME, function(req, res, next) {
-    res.render('comingsoon.ejs', {selected: 'home', hideNav:true});
+    res.render('comingsoon.ejs', {selected: 'home', hideNav:true, page: 'home'});
 });
 
 
  app.get('/home',  function(req, res, next) {
-    res.render('home.ejs', {selected: 'home', hideNav:true});
+    res.render('home.ejs', {selected: 'home', hideNav:true, page: 'home'});
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
-    res.render('about.ejs', {selected: 'about', hideNav: false});
+    res.render('about.ejs', {selected: 'about', hideNav: false, page: 'about'});
 });
 
  app.get(urls.CONTACT, function(req, res, next) {
-    res.render('contact.ejs', {selected: 'contact', hideNav: false});
+    res.render('contact.ejs', {selected: 'contact', hideNav: false, page: 'contact'});
 });
 
 
@@ -74,6 +74,7 @@ app.get(urls.BROWSE, function(req, res, next) {
             res.render('search.ejs', {  
                 data: data.reverse(),
                 urls: urls, 
+                page: 'browse',
                 selected: 'browse', 
                 hideNav: false,
                 encoder: encoder.encoder
@@ -81,6 +82,7 @@ app.get(urls.BROWSE, function(req, res, next) {
         }else {
             res.render('search-no-results.ejs', {  
                 urls: urls, 
+                page: 'browse',
                 hideNav: false, 
                 selected: 'browse'
             });

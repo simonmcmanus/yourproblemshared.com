@@ -25,6 +25,11 @@ font-style:normal;
 font-weight:400;
 }
 
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+
 
 html body .navbar-inner {
 	font-family: 'freight-sans-pro';
@@ -88,31 +93,50 @@ position: relative;
 }
 
 #content::before {
-content: "";
-position: absolute;
-left: 50px;
-top: -15px;
-border-width: 0px 15px 15px 15px;
-border-style: solid;
-border-color: #adada8 transparent;
-display: block;
-width: 0;
-
-
+	content: "";
+	position: absolute;
+	top: -15px;
+	border-width: 0px 15px 15px 15px;
+	border-style: solid;
+	border-color: #adada8 transparent;
+	display: block;
+	width: 0;
 }
 #content::after {
-content: "";
-position: absolute;
-left: 50px;
-top: -13.6px;
-border-width: 0px 15px 15px 15px;
-border-style: solid;
-border-color: #FAFAF5 transparent;
-display: block;
-width: 0;
+	content: "";
+	position: absolute;
+	top: -13.6px;
+	border-width: 0px 15px 15px 15px;
+	border-style: solid;
+	border-color: #FAFAF5 transparent;
+	display: block;
+	width: 0;
+}
 
+#content.home::before,
+#content.home::after {
+	left: 50px;
+}
+
+#content.about::before,
+#content.about::after {
+	left: 100px;
 
 }
+
+
+#content.contact::before,
+#content.contact::after {
+	left: 150px;
+
+}
+
+#content.browse::before,
+#content.browse::after {
+	left: 200px;
+
+}
+
 
 
 
