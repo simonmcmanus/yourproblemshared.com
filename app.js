@@ -192,7 +192,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                 //     sendEmail(req.body.From, 'Relax, your problem has been shared', body);
                 // });
 
-                fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
+                fs.readFile('./views/emails/company-problem-reported.html', 'utf8', function(error, data) {
                     console.log('>>>',arguments);
                     var body = ejs.render(data, {
                         company: site,
