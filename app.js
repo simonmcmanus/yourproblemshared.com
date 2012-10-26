@@ -158,11 +158,11 @@ app.post(urls.INBOUND, function(req, res, next) {
     if(!req.bodyToFull) {
         res.send('ok');
     }
-    console.log('BOUT TO SEND', req.body.ToFull[0].Name, req.body.ToFull[0].Email);
 
-
+    var company = req.body.ToFull[0].Email.split('@')[1];
     ds.saveEmail({
         id: req.body.MessageID,
+        company: company,
         toEmail: req.body.ToFull[0].Email,
         toName: req.body.ToFull[0].Name,
         fromEmail: req.body.FromFull.Email,
@@ -179,8 +179,7 @@ app.post(urls.INBOUND, function(req, res, next) {
         referenceId: headers['References'] || ""
     }, function(data) {
         if(data) {
-            var url = 'http://yourproblemshared.com/company/gosquared.com/'+data.insertId+'/';
-            console.log('SENDING EMAIL');
+            var url = 'http://yourproblemshared.com/'+company+'/mail/'+data.insertId+'/';
             sendEmail(req.body.From, 'Relax, your problem has been shared', 'Here is the address:'+url);
             res.send('ok');
 
