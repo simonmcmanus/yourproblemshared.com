@@ -187,7 +187,7 @@ app.post(urls.INBOUND, function(req, res, next) {
             if(+isFirst) {
                 var url = 'http://yourproblemshared.com/'+site+'/mail/'+data.insertId+'/';
                 fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
-                    console.log(data);
+                    console.log(arguments);
                     var body = ejs.render(data, {
                         site: 'Google',
                          url: 'http://google.com'
