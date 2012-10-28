@@ -38,15 +38,62 @@ font-weight:400;
 
 
 
-@media  (max-width: 699px) {
-  body {
-    background: red;
-  }
-  #wrapper {
-  	margin: 0;
-  }
-}
+@media  (max-width: 500px) {
+	#wrapper {
+		margin: 0;
+	}
+	/*  horrid :( it gets worse */
+	#content.home::before,
+	#content.home::after {
+		left: 28px !important;
+	}
 
+	#content.about::before,
+	#content.about::after {
+		 left: 227px !important;
+	}
+
+	#content.contact::before,
+	#content.contact::after {
+		left: 329px !important;
+	}
+
+	#content.browse::before,
+	#content.browse::after {
+		left: 125px !important;
+	}
+}
+@media  (max-width: 400px) {
+	.nav li {
+		font-size:0.8em !important;
+	}
+	h1 {
+		font-size:1.6em;
+	}
+	#wrapper {
+		margin: 0;
+	}
+
+	#content.home::before,
+	#content.home::after {
+		left: 20px !important;
+	}
+
+	#content.about::before,
+	#content.about::after {
+		 left: 170px !important;
+	}
+
+	#content.contact::before,
+	#content.contact::after {
+		left: 249px !important;
+	}
+
+	#content.browse::before,
+	#content.browse::after {
+		left: 95px !important;
+	}
+}
 
 html body .navbar {
 	font-family: 'freight-sans-pro';
@@ -68,14 +115,16 @@ html body .navbar {
 html body .navbar .nav > li.active a, 
 html body .navbar .nav > li.active a:hover {
 	background: #fff;
+	margin-left:-3px !important;
 }
 
 html body .navbar li {
+	padding: 0 !important;
 display: inline;	
 }
 
 html body .navbar .nav {
-	padding-left: 10px;
+	padding-left: 3px;
 }
 
 
@@ -138,7 +187,6 @@ position: relative;
 	width: 0;
 }
 #content::after {
-transition:  all 1s;
 	content: "";
 	position: absolute;
 	top: -12px;
@@ -156,17 +204,17 @@ transition:  all 1s;
 
 #content.about::before,
 #content.about::after {
-	left: 108px;
+	left: 194px;
 }
 
 #content.contact::before,
 #content.contact::after {
-	left: 194px;
+	left: 285px;
 }
 
 #content.browse::before,
 #content.browse::after {
-	left: 285px;
+	left: 108px;
 }
 
 a {
@@ -250,12 +298,6 @@ background: #fff;	background-repeat: no-repeat;
 }
 
 
-@media (min-width: 980px) {
-  html body .navbar-inner {
-  	/*height: 110px;*/
-  }
-}
-
 
   .navbar .nav > li > a {
   	text-shadow: none;
@@ -284,4 +326,11 @@ background: #fff;	background-repeat: no-repeat;
 .navbar-search {
 	margin-top: 2px !important;
 	color: red;
+}
+
+
+iframe.twitter-share-button {
+	TOP: 5PX;
+position: relative;
+right: -10px;
 }

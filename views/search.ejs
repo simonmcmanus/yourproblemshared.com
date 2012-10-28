@@ -1,11 +1,10 @@
 <h2>Browse</h2>
 <p>
-A list of the most recent email sent to cc@yourproblemshared.com
+A list of the most recent emails copied to cc@yourproblemshared.com:
 </p>
 <div>
 
 <%
-console.log('urls', urls);
 var c = data.length;
 while(c--) {
 		var email = data[c];
@@ -14,7 +13,7 @@ while(c--) {
 										<img src="/assets/img/email.png" width="100" class="floatRight">
 
 			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
-			<h4><%=encoder.htmlDecode(unescape(email.subject))%></a> <i>(1 of 10)</i></h4>		
+			<h4><%=encoder.htmlDecode(unescape(email.subject))%></a></h4>		
 			<h5><%=encoder.htmlDecode(unescape(email.company))%></h5>
 			<%-encoder.htmlDecode(unescape(email.textBody))%>
 
