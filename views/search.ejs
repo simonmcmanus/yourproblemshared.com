@@ -11,14 +11,12 @@ while(c--) {
 		var email = data[c];
 			%>
 					<div class="email">
-										<img src="/assets/img/email.png" class="floatRight">
+										<img src="/assets/img/email.png" width="100" class="floatRight">
 
 			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
-			<h4><%=encoder.htmlDecode(unescape(email.subject))%></h4>
-			<h5><%=encoder.htmlDecode(unescape(email.toEmail))%></h5>
-			</a>
-
-			<%=encoder.htmlDecode(unescape(email.textBody))%>
+			<h4><%=encoder.htmlDecode(unescape(email.subject))%></a> <i>(1 of 10)</i></h4>		
+			<h5><%=encoder.htmlDecode(unescape(email.company))%></h5>
+			<%-encoder.htmlDecode(unescape(email.textBody))%>
 
 			</div>
 <%
