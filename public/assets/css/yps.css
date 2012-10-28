@@ -199,17 +199,17 @@ position: relative;
 
 #content.home::before,
 #content.home::after {
-	left: 29px;
+	left: 25px;
 }
 
 #content.about::before,
 #content.about::after {
-	left: 194px;
+	left: 190px;
 }
 
 #content.contact::before,
 #content.contact::after {
-	left: 285px;
+	left: 274px;
 }
 
 #content.browse::before,
