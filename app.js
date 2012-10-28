@@ -40,7 +40,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
 
  app.get('/home',  function(req, res, next) {
-    res.render('home.ejs', {selected: 'home', hideNav:true, page: 'home'});
+    res.render('home.ejs', {selected: 'home', hideNav:false, page: 'home'});
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
