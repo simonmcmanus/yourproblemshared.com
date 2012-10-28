@@ -265,7 +265,10 @@ background: #fff;	background-repeat: no-repeat;
   .search-query  {
   	background: #fff !important;
   }
-  li  a {
+  #content li {
+  	padding:7px ;
+  }
+  .nav li  a {
   	padding: 5px 15px !important;  	
   }
 

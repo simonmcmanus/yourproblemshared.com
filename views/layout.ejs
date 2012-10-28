@@ -33,9 +33,9 @@
 
               <ul class="nav">
                 <li class="<%if(selected==='home'){%>active<%}%>"><a href="/home" data-page='home'>Home</a></li>
+                <li class="<%if(selected==='browse'){%>active<%}%>"><a href="/browse"  data-page='browse'>Browse</a></li>
                 <li class="<%if(selected==='about'){%>active<%}%>"><a href="/about"  data-page='about'>About</a></li>
                 <li class="<%if(selected==='contact'){%>active<%}%>"><a href="/contact"  data-page='contact'>Contact</a></li>
-                <li class="<%if(selected==='browse'){%>active<%}%>"><a href="/browse"  data-page='browse'>Browse</a></li>
 
               </ul>
   <!-- <form class="navbar-search pull-left" action="/company/search/" method="post">
@@ -51,7 +51,17 @@
 
         <%-body%>
 
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://yourproblemshared.com" data-via="urproblemshared">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=241417142565963";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     </div>
       <!-- Le javascript
       ================================================== -->
