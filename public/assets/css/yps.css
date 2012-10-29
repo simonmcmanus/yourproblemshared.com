@@ -328,7 +328,9 @@ background: #fff;	background-repeat: no-repeat;
 	color: red;
 }
 
-
+.gmail_quote {
+	display: none;
+}
 iframe.twitter-share-button {
 	TOP: 5PX;
 position: relative;

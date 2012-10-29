@@ -6,17 +6,21 @@
 
 <%
 var c = mail.length;
+var reporter = null;
 while(c--){
 %>
-	<div id="email" style="border:1px solid blue">
+	<div id="email">
 		<h2><%-unescape(mail[c].subject)%></h2>
 		<h4><%-moment(new Date(unescape(mail[c].date))).fromNow()%></h4>
-		<h4>	<%=mail[c].fromEmail%></h4>
-		<div class="body" >
-			<%=mail[c].fromEmail%>
-			<hr />
 			<%
-			var out = mail[c].htmlBody.replace(new RegExp(mail[c].fromEmail, 'g'), '[details removed]');
+
+		if(!reporter) {
+			reporter = mail[c].reporter;
+		}
+		%>
+		<div class="body" >
+			<%
+			var out = mail[c].htmlBody.replace(new RegExp(reporter, 'g'), '[details removed]');
 			%>
 			<%-encoder.htmlDecode(unescape(out))%>
 		</div>
