@@ -132,12 +132,13 @@ app.get(urls.COMPANY , function(req, res, next) {
 });
 
 
-var sendEmail = function(to, subject, body) {
+var sendEmail = function(to, cc, subject, body) {
     // send email to 
     var postmark = require("postmark-api")('d64bdb29-b589-4584-8964-23f5d7e4a614');
     postmark.send({
         From: 'cc@yourproblemshared.com',
         To: to,
+        Cc: cc,
         Subject: subject,
         TextBody: body,
     }, function(response, b, c){
@@ -193,7 +194,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                         company: site,
                          url: url
                     });
-                    sendEmail(req.body.From, 'Relax, your problem has been shared', body);
+                    sendEmail(req.body.From, null, 'Relax, your problem has been shared', body);
                 });
 
                 fs.readFile('./views/emails/company-problem-reported.html', 'utf8', function(error, data) {
@@ -202,7 +203,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                         company: site,
                          url: url
                     });
-                    sendEmail(req.body.ToFull[0].Email, 'ATTENTION REQUIRED', body);
+                    sendEmail(req.body.ToFull[0].Email, req.body.From, 'ATTENTION REQUIRED', body);
                 });
             }
             res.send('ok');
