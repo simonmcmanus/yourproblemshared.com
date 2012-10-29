@@ -33,6 +33,7 @@ CREATE TABLE `email` (
   `isFirst` boolean DEFAULT NULL,
   `toEmail` varchar(500) DEFAULT NULL,
   `fromEmail` varchar(450) DEFAULT NULL,
+  `reporter` varchar(450) DEFAULT NULL,
   `ccEmail` varchar(450) DEFAULT NULL,
   `subject` varchar(450) DEFAULT NULL,
   `messageId` blob DEFAULT NULL,

@@ -4,27 +4,37 @@
 	If you would like to share your problems you can do the same.
 </div>
 
-	<%
-	var c = mail.length;
-	while(c--){
-	%>
-		<div id="email">
+<%
+var c = mail.length;
+while(c--){
+%>
+	<div id="email" style="border:1px solid blue">
 		<h2><%-unescape(mail[c].subject)%></h2>
-		<div class="body"><%-encoder.htmlDecode(unescape(mail[c].htmlBody))%></div>
-      		</div>	
-		<%	
-	}
-	%> <br />       <div id="disqus_thread"></div>
-			<script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'yourproblemshared'; // required: replace example with your forum shortname
+		<h4><%-moment(new Date(unescape(mail[c].date))).fromNow()%></h4>
+		<h4>	<%=mail[c].fromEmail%></h4>
+		<div class="body" >
+			<%=mail[c].fromEmail%>
+			<hr />
+			<%
+			var out = mail[c].htmlBody.replace(new RegExp(mail[c].fromEmail, 'g'), '[details removed]');
+			%>
+			<%-encoder.htmlDecode(unescape(out))%>
+		</div>
+	</div>	
+	<%	
+}
+	%> <br />      
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'yourproblemshared'; // required: replace example with your forum shortname
 
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         

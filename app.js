@@ -60,6 +60,7 @@ app.get(urls.EMAIL, function(req, res, next) {
         res.render('email.ejs', {
             mail: replies,
             selected: '',
+            moment: require('moment'),
             page: 'browse',
             hideNav: false, 
             encoder: encoder.encoder
