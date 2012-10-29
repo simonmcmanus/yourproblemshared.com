@@ -13,9 +13,14 @@ while(c--) {
 										<img src="/assets/img/email.png" width="100" class="floatRight">
 
 			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
-			<h4><%=encoder.htmlDecode(unescape(email.subject))%></a></h4>		
-			<h5><%=encoder.htmlDecode(unescape(email.company))%></h5>
-			<%-encoder.htmlDecode(unescape(email.textBody))%>
+			<h4><%=encoder.htmlDecode(unescape(email.subject))%></a></h4>
+			<h5><%=encoder.htmlDecode(unescape(email.company))%></h5> 
+			<%-encoder.htmlDecode(unescape(email.htmlBody))%>
+			<%
+			var out = email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]');
+			%>
+
+			<strong class="floatRight"><%-moment(new Date(unescape(email.date))).fromNow()%></strong>
 
 			</div>
 <%

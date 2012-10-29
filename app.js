@@ -43,6 +43,17 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
     res.render('home.ejs', {selected: 'home', hideNav:false, page: 'home'});
 });
 
+  app.get('/sample',  function(req, res, next) {
+    res.render('emails/user-problem-reported.ejs', {
+        selected: 'home',
+         hideNav:false, 
+         page: 'home',
+         company: 'Sample Company',
+         url: 'http://sample.company'
+
+     });
+});
+
  app.get(urls.ABOUT, function(req, res, next) {
     res.render('about.ejs', {selected: 'about', hideNav: false, page: 'about'});
 });
@@ -78,6 +89,7 @@ app.get(urls.BROWSE, function(req, res, next) {
                 urls: urls, 
                 page: 'browse',
                 selected: 'browse', 
+                moment: require('moment'),
                 hideNav: false,
                 encoder: encoder.encoder
             });
@@ -133,10 +145,11 @@ app.get(urls.COMPANY , function(req, res, next) {
 
 
 var sendEmail = function(to, cc, subject, body) {
+    return;
     // send email to 
     var postmark = require("postmark-api")('d64bdb29-b589-4584-8964-23f5d7e4a614');
     postmark.send({
-        From: 'cc@yourproblemshared.com',
+        From: 'simon@yourproblemshared.com',
         To: to,
         Cc: cc,
         Subject: subject,
@@ -189,7 +202,7 @@ app.post(urls.INBOUND, function(req, res, next) {
         if(data) {
             if(+isFirst) {
                 var url = 'http://yourproblemshared.com/'+site+'/mail/'+data.insertId+'/';
-                fs.readFile('./views/emails/user-problem-reported.html', 'utf8', function(error, data) {
+                fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
                         company: site,
                          url: url
@@ -197,7 +210,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                     sendEmail(req.body.From, null, 'Relax, your problem has been shared', body);
                 });
 
-                fs.readFile('./views/emails/company-problem-reported.html', 'utf8', function(error, data) {
+                fs.readFile('./views/emails/company-problem-reported.ejs', 'utf8', function(error, data) {
                     console.log('>>>',arguments);
                     var body = ejs.render(data, {
                         company: site,
