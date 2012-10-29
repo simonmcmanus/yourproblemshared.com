@@ -262,9 +262,70 @@ i {
 	background: #fff;
 	border: 1px solid #eee;
 	margin-bottom: 15px;
+	margin-left: 40px;
+	position: relative;
+}
+
+
+#email::before,
+#email::after {
+	top: 8px;
+	bottom: auto;
+	content: "";
+	position: absolute;
+
+	height: 0px;
+	border-width: 6px 8px 6px 0px;
+	border-style: solid;
+	border-color:  transparent #eee;
+	display: block;
+	width: 0;
+}
+
+
+#email::before {
+		border-color:  transparent #EEE;
+}
+#email::after {
+		border-color:  transparent #fff;
+}
+html body .speachWrapper.isReporter #email::after,
+html body .speachWrapper.isReporter #email::before {
+	right: -7px;
+	border-width: 6px 0px 6px 8px;
+}
+
+html body .speachWrapper.isReporter #email::before {
+		right: -8px;
+}
+
+html body .speachWrapper.notReporter #email::before,
+html body .speachWrapper.notReporter #email::after {
+		left: -7px;
+
+}
+html body .speachWrapper.notReporter #email::before {
+	left: -8px;
+}
+
+
+.speachWrapper {
+	background: no-repeat url(/assets/img/icons/worker.png) top left;
 
 }
 
+.speachWrapper.isReporter {
+	background: no-repeat url(/assets/img/icons/user.png) top right;
+	
+}
+.speachWrapper.isReporter #email {
+	margin-left: 0;
+	margin-right: 40px;
+}
+#email.isReporter .emailImg img, 
+#email.isReporter .emailImg {
+	float: left;
+}
 
 .floatRight {
 	float:right;

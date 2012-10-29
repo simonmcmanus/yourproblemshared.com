@@ -8,16 +8,26 @@
 var c = mail.length;
 var reporter = null;
 while(c--){
-%>
-	<div id="email">
-		<h2><%-unescape(mail[c].subject)%></h2>
-		<h4><%-moment(new Date(unescape(mail[c].date))).fromNow()%></h4>
-			<%
+			
 
 		if(!reporter) {
 			reporter = mail[c].reporter;
+			var isReporter = 'isReporter';
+		}else {
+
+			if(reporter === mail[c].fromEmail) {
+				var isReporter = 'isReporter';
+			} else {
+				var isReporter = 'notReporter';
+			}
 		}
-		%>
+	
+%>
+<div class="speachWrapper <%=isReporter%>">
+	<div id="email"  >
+		<h2><%-unescape(mail[c].subject)%></h2>
+		<h4><%-moment(new Date(unescape(mail[c].date))).fromNow()%></h4>
+
 		<div class="body" >
 			<%
 			var out = mail[c].htmlBody.replace(new RegExp(reporter, 'g'), '[details removed]');
@@ -25,6 +35,7 @@ while(c--){
 			<%-encoder.htmlDecode(unescape(out))%>
 		</div>
 	</div>	
+</div>
 	<%	
 }
 	%> <br />      
