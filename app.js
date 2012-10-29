@@ -145,8 +145,9 @@ app.get(urls.COMPANY , function(req, res, next) {
 
 
 var sendEmail = function(to, cc, subject, body) {
-    return;
-    // send email to 
+    if(to === 'cc@yourproblemshared.com') {
+        return; // failsafe
+    }
     var postmark = require("postmark-api")('d64bdb29-b589-4584-8964-23f5d7e4a614');
     postmark.send({
         From: 'simon@yourproblemshared.com',
