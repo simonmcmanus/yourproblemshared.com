@@ -37,7 +37,13 @@ font-weight:400;
       }
 
 
+html body .resolved0 {
+	background: red;
+}
 
+html body .resolved1 {
+	background: green;
+}
 @media  (max-width: 500px) {
 	#wrapper {
 		margin: 0;

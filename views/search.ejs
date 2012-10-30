@@ -6,10 +6,11 @@ A list of the most recent emails copied to cc@yourproblemshared.com:
 
 <%
 var c = data.length;
+
 while(c--) {
 		var email = data[c];
 			%>
-			<div class="email">
+			<div class="email resolved<%=email.resolved%>" >
 			<img src="/assets/img/email.png" width="100" class="floatRight">
 
 			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">

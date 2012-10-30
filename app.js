@@ -57,11 +57,24 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
 
 app.get(urls.RESOLVE,  function(req, res, next) {
-    res.render('home.ejs', {
-        selected: 'home',
-         hideNav: false,
-            page: 'home',
-          });
+    ds.resolveEmail({
+        id: req.params.id, 
+        hash: req.params.hash
+    }, function(data, params) {
+
+        console.log(data.affectedRows);
+        if(data.affectedRows > 0) {
+            res.render('resolved.ejs', {
+                 hideNav: false,
+                    page: '',
+                    selected: ''
+            });            
+        }else {
+            res.send('There was a problem. Please email simon@yourproblemshared.com');
+        }
+    });
+
+
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
