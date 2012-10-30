@@ -262,7 +262,6 @@ app.post(urls.INBOUND, function(req, res, next) {
                 fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
                  company: site,
-                 isPre: false,
                      url: url,
               resolveUrl: 'http://yourproblemshared.com'+urls.get('RESOLVE', {
                          hash: hash,
@@ -276,8 +275,9 @@ app.post(urls.INBOUND, function(req, res, next) {
                 fs.readFile('./views/emails/site-problem-reported.ejs', 'utf8', function(error, data) {
                     console.log('>>>',arguments);
                     var body = ejs.render(data, {
+                          isPre: false,
                         company: site,
-                         url: url
+                            url: url
                     });
                     sendEmail(req.body.ToFull[0].Email, req.body.From, 'ATTENTION REQUIRED', body);
                 });
