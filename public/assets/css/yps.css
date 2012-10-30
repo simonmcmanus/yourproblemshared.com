@@ -205,7 +205,7 @@ position: relative;
 #content::before {
 	content: "";
 	position: absolute;
-	top: -13px;
+	top: -14px;
 	border-width: 0px 13px 13px 13px;
 	border-style: solid;
 	border-color: #adada8 transparent;
@@ -215,7 +215,7 @@ position: relative;
 #content::after {
 	content: "";
 	position: absolute;
-	top: -12px;
+	top: -13px;
 	border-width: 0px 13px 13px 13px;
 	border-style: solid;
 	border-color: #FAFAF5 transparent;
@@ -243,14 +243,26 @@ position: relative;
 	left: 108px;
 }
 
-#content.resolved0::before
-{
-	border-color: #F2B2A9 transparent;
-}
-
 #content.resolved0::after
 {
-	border-color: #F2B2A9 transparent;
+	border-color: #F7D3CD transparent;
+
+}
+
+
+#content.resolved0::before
+{
+	border-color: #999 transparent;
+
+}
+
+#content.resolved1::after
+{
+	border-color: #F7D3CD transparent;
+}
+#content.resolved1::after
+{
+	border-color: #EEF4E6 transparent;
 }
 
 
