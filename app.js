@@ -44,12 +44,14 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 });
 
   app.get('/sample',  function(req, res, next) {
-    res.render('emails/user-problem-reported.ejs', {
+    res.render('emails/site-problem-reported.ejs', {
         selected: 'home',
          hideNav:false, 
          page: 'home',
          company: 'Sample Company',
-         url: 'http://sample.company'
+         url: 'http://yourproblemshared.com/problems/company.com/mail/21',
+         isPre: true,
+         resolvedUrl: 'http://yourproblemshared.com/resolve'
 
      });
 });
@@ -61,8 +63,6 @@ app.get(urls.RESOLVE,  function(req, res, next) {
         id: req.params.id, 
         hash: req.params.hash
     }, function(data, email) {
-
-        console.log(data);
         if(data.affectedRows > 0) {
             // send email to say emails marked as resolved.
             res.render('resolved.ejs', {
@@ -70,17 +70,18 @@ app.get(urls.RESOLVE,  function(req, res, next) {
                     page: '',
                     selected: ''
             });  
-            fs.readFile('./views/emails/problem-resolved.ejs', 'utf8', function(error, data) {
-                sendEmail(email.toEmail, email.fromEmail, 'Issue Resolved', data);
+            fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
+                sendEmail(email.fromEmail, null, 'Issue Resolved', data);
+            });
+            fs.readFile('./views/emails/site-problem-resolved.ejs', 'utf8', function(error, data) {
+                sendEmail(email.toEmail, null, 'Issue Resolved', data);
             });
         }else {
              res.render('resolveError.ejs', {
                  hideNav: false,
                     page: '',
-                    selected: ''
-            });       
-            
-         
+                selected: ''
+            });
         }
     });
 
@@ -144,7 +145,6 @@ app.post(urls.SEARCH, function(req, res, next) {
     ds.company({
         term: req.body.term
     }, function(data) {
-    console.log(data);
 //        data = sizlate.classifyKeys(data);
         if(data.length > 0) {
             res.render('search.ejs', {  data: data, selected: '',  urls: urls});
@@ -160,19 +160,24 @@ app.get(urls.COMPANY , function(req, res, next) {
     ds.company({
         company: req.params.company
     }, function(data) {
-        console.log(data);
-
-        res.json(data);
-        return;
-        res.render(__dirname+'/views/index.html', {
-            layout: false,
-            selectors : {
-                '#content': {
-                    partial: 'mailsummary.html',
-                    data: data
-                }
-            }
-        });
+        if(data.length > 0) {
+            res.render('search.ejs', { 
+                data: data, 
+                selected: '',
+                encoder: encoder.encoder,
+                hideNav: false,
+                page: 'browse',
+                moment: require('moment'),
+                urls: urls
+            });
+        }else {
+            res.render('search-no-results.ejs', {  
+                urls: urls, 
+                page: 'browse',
+                hideNav: false, 
+                selected: 'browse'
+            });
+        }
     });
 });
 
@@ -257,6 +262,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                 fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
                  company: site,
+                 isPre: false,
                      url: url,
               resolveUrl: 'http://yourproblemshared.com'+urls.get('RESOLVE', {
                          hash: hash,
