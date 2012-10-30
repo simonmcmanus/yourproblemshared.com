@@ -46,12 +46,17 @@ YourProblemShared.com</h1></a>
         
       </div>
       <%
-            }
-            %>
+      }%>
       <div id="content" class="container <%=page%> resolved<%=isResolved%>">
+      <%
+      if(message != '') {
+      %>
       <div class="message">
-        Issue has been unresolved for <strong>4 hours</strong>.
+        <%=message%>
       </div>
+      <%
+      }
+      %>
 
         <%-body%>
   

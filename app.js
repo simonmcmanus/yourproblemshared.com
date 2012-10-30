@@ -39,7 +39,8 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
         selected: 'home', 
         hideNav:true, 
         page: 'home',
-        isResolved: 0
+        isResolved: 0,
+        message :''
     });
 });
 
@@ -49,7 +50,8 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
         selected: 'home',
          hideNav:false,
          page: 'home',
-         isResolved: false
+         isResolved: false,
+         message :''
      });
 });
 
@@ -62,7 +64,8 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
          url: 'http://yourproblemshared.com/problems/company.com/mail/21',
          isPre: true,
          isResolved: false,
-         resolvedUrl: 'http://yourproblemshared.com/resolve'
+         resolvedUrl: 'http://yourproblemshared.com/resolve',
+         message :''
 
      });
 });
@@ -80,7 +83,8 @@ app.get(urls.RESOLVE,  function(req, res, next) {
                  hideNav: false,
                     isResolved: 1,
                     page: '',
-                selected: ''
+                selected: '',
+                message :''
             });  
             fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
                 sendEmail(email.fromEmail, null, 'Issue Resolved', data);
@@ -92,7 +96,8 @@ app.get(urls.RESOLVE,  function(req, res, next) {
              res.render('resolveError.ejs', {
                  hideNav: false,
                     page: '',
-                selected: ''
+                selected: '',
+                message :''
             });
         }
     });
@@ -105,7 +110,8 @@ app.get(urls.RESOLVE,  function(req, res, next) {
         selected: 'about', 
         hideNav: false, 
         page: 'about',
-        isResolved: false
+        isResolved: false,
+        message :''
     });
 });
 
@@ -114,27 +120,36 @@ app.get(urls.RESOLVE,  function(req, res, next) {
         selected: 'contact', 
         hideNav: false, 
         page: 'contact',
-        isResolved: false
+        isResolved: false,
+        message :''
     });
 });
 
 
 app.get(urls.EMAIL, function(req, res, next) {
+    var moment = require('moment');
     ds.getEmail({
         id: req.params.id,
     }, function(replies) {
 //        replies.push(email);
+//        
+        if(replies[0].resolved === 1) {
+            var msg = 'Issue was resolved  '+moment(new Date(replies[0].resolvedEpoch)).fromNow()
+        }else {
+            var msg = 'Issue has been unresolved for '+moment(new Date(replies[0].date)).fromNow()
+        }
         res.render('email.ejs', {
             mail: replies,
             selected: '',
-            moment: require('moment'),
+            moment: moment,
             page: 'browse',
             hideNav: false, 
             encoder: encoder.encoder, 
-            isResolved: replies[0].resolved
+            isResolved: replies[0].resolved,
+            message :msg
         });
     });
-});
+}); 
 
 
 
@@ -149,14 +164,16 @@ app.get(urls.BROWSE, function(req, res, next) {
                 moment: require('moment'),
                 hideNav: false,
                 isResolved: false,
-                encoder: encoder.encoder
+                encoder: encoder.encoder,
+                message :''
             });
         }else {
             res.render('search-no-results.ejs', {  
                 urls: urls, 
                 page: 'browse',
                 hideNav: false, 
-                selected: 'browse'
+                selected: 'browse',
+                message :''
             });
         }
     });
@@ -192,14 +209,16 @@ app.get(urls.COMPANY , function(req, res, next) {
                 hideNav: false,
                 page: 'browse',
                 moment: require('moment'),
-                urls: urls
+                urls: urls,
+                message :''
             });
         }else {
             res.render('search-no-results.ejs', {  
                 urls: urls, 
                 page: 'browse',
                 hideNav: false, 
-                selected: 'browse'
+                selected: 'browse',
+                message :''
             });
         }
     });

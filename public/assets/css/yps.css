@@ -42,39 +42,27 @@ font-weight:400;
 }
 
 html body .resolved0 {
-	border: 1px solid #F7A394;
+	border: 1px solid #F7D3CD;
 }
 
 html body #wrapper #content .message {
+	border-radius:  3px 3px 0 0 ;
 	margin: -20px -20px 20px -20px !important;
 	padding: 10px 20px;
 }
 
 html body .resolved1 {
-	border: 1px solid green;
+	border: 1px solid #EEF4E6;
 }
 
 
 html body .resolved0 .footer,
 html body .resolved0 .message {
-background: #f7a394; /* Old browsers */
-background: -moz-linear-gradient(top, #f7a394 0%, #ef998f 50%, #ed6f5e 55%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7a394), color-stop(50%,#ef998f), color-stop(55%,#ed6f5e)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #f7a394 0%,#ef998f 50%,#ed6f5e 55%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #f7a394 0%,#ef998f 50%,#ed6f5e 55%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #f7a394 0%,#ef998f 50%,#ed6f5e 55%); /* IE10+ */
-background: linear-gradient(to bottom, #f7a394 0%,#ef998f 50%,#ed6f5e 55%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7a394', endColorstr='#ed6f5e',GradientType=0 ); /* IE6-9 */}
-
+background: #f7d3cd; /* Old browsers */}
+html body .resolved1 .message,
 html body .resolved1 .footer {
-	background: #9dd53a; /* Old browsers */
-background: -moz-linear-gradient(top, #9dd53a 0%, #a1d54f 50%, #80c217 51%, #7cbc0a 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(50%,#a1d54f), color-stop(51%,#80c217), color-stop(100%,#7cbc0a)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* IE10+ */
-background: linear-gradient(to bottom, #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 ); /* IE6-9 */
+
+	background: #eef4e6;
 }
 @media  (max-width: 500px) {
 	#wrapper {
@@ -257,12 +245,12 @@ position: relative;
 
 #content.resolved0::before
 {
-	border-color: #F7A394 transparent;
+	border-color: #F2B2A9 transparent;
 }
 
 #content.resolved0::after
 {
-	border-color: #F7A394 transparent;
+	border-color: #F2B2A9 transparent;
 }
 
 

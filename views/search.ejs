@@ -24,7 +24,6 @@ while(c--) {
 						</pre>
 					<%
 				}else { // use html
-					console.log('USE JTL');
 					%>
 					<%-encoder.htmlDecode(unescape(email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]')))%>
 					<%
@@ -32,10 +31,15 @@ while(c--) {
 				%>
 			</div>
 			<div class="footer">
-				Sent to <strong><%=encoder.htmlDecode(unescape(email.company))%></strong>&nbsp;
-			
-			<strong class="ago"><%-moment(new Date(unescape(email.date))).fromNow()%></strong>
-			</div>
+				<%
+     		if(email.resolved === 1) {
+            	var msg = 'Issue was resolved  '+moment(new Date(email.resolvedEpoch)).fromNow()
+        	}else {
+            var msg = 'Issue created '+moment(new Date(email.date)).fromNow() + ' and remains unresolved. :('
+     	   }
+				%>
+
+<%=msg%></div>
 			</div>
 <%
 }
