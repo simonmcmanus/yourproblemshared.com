@@ -279,7 +279,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                         company: site,
                             url: url
                     });
-                    sendEmail(req.body.ToFull[0].Email, req.body.From, 'ATTENTION REQUIRED', body);
+                    sendEmail(req.body.ToFull[0].Email, null, 'ATTENTION REQUIRED', body);
                 });
             }
             res.send('ok');
