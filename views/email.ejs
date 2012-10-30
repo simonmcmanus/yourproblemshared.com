@@ -36,7 +36,6 @@ while(c--){
 					</pre>
 				<%
 			}else { // use html
-				console.log('USE JTL');
 				%>
 				<%-encoder.htmlDecode(unescape(mail[c].htmlBody.replace(new RegExp(reporter, 'g'), '[details removed]')))%>
 				<%

@@ -134,9 +134,9 @@ app.get(urls.EMAIL, function(req, res, next) {
 //        replies.push(email);
 //        
         if(replies[0].resolved === 1) {
-            var msg = 'Issue was resolved  '+moment(new Date(replies[0].resolvedEpoch)).fromNow()
+            var msg = 'Problem was <strong>resolved  '+moment(+replies[0].resolvedEpoch).fromNow()+'</strong>'
         }else {
-            var msg = 'Issue has been unresolved for '+moment(new Date(replies[0].date)).fromNow()
+            var msg = 'Problem has been <strong>unresolved</strong> for <strong>'+moment(new Date(unescape(replies[0].date))).fromNow()+'</strong>'
         }
         res.render('email.ejs', {
             mail: replies,

@@ -33,6 +33,7 @@ font-weight:400;
       #wrapper {
 
 	margin: 20px 20% 0;
+	letter-spacing: 0.9px;
 	max-width: 800px;
       }
 
@@ -282,7 +283,7 @@ h1 {
 	font-weight: bolder;
 	margin: 0;
 padding: 0;
-	color:  #2E3549;;
+	color: #384874;
 }
 
 h1:before {
@@ -292,6 +293,7 @@ h1:before {
 
 h2 {
 	margin-top: 0;
+	color: #384874;
 	padding-top: 0;	
 }
 

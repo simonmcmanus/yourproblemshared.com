@@ -33,9 +33,9 @@ while(c--) {
 			<div class="footer">
 				<%
      		if(email.resolved === 1) {
-            	var msg = 'Issue was resolved  '+moment(new Date(email.resolvedEpoch)).fromNow()
+            	var msg = 'Problem was resolved  '+moment(+email.resolvedEpoch).fromNow()
         	}else {
-            var msg = 'Issue created '+moment(new Date(email.date)).fromNow() + ' and remains unresolved. :('
+            var msg = 'Problem created '+moment(new Date(unescape(email.date))).fromNow() + ' and remains unresolved. :('
      	   }
 				%>
 
