@@ -68,7 +68,7 @@ app.get(urls.RESOLVE,  function(req, res, next) {
             res.render('resolved.ejs', {
                  hideNav: false,
                     page: '',
-                    selected: ''
+                selected: ''
             });  
             fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
                 sendEmail(email.fromEmail, null, 'Issue Resolved', data);

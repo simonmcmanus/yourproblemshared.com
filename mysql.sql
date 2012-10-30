@@ -48,6 +48,7 @@ CREATE TABLE `email` (
   `fromName` varchar(450) DEFAULT NULL,
   `ccName` varchar(450) DEFAULT NULL,
   `hash` blob DEFAULT NULL,
+  `resolvedEpoch` varchar(450) DEFAULT NULL,
   `resolved` boolean DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
