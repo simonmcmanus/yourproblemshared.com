@@ -187,11 +187,7 @@ app.post(urls.INBOUND, function(req, res, next) {
             return; // that shit cray.
         }
         fs.readFile('./views/emails/user-report-failed.ejs', 'utf8', function(error, data) {
-            var body = ejs.render(data, {
-                company: site,
-                 url: url
-            });
-            sendEmail(req.body.From, 'simon@yourproblemshared.com', 'Submission failed', body);
+            sendEmail(req.body.From, 'simon@yourproblemshared.com', 'Submission failed', data);
         });
         return;
     }
