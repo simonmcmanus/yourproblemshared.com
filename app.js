@@ -54,6 +54,16 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
      });
 });
 
+
+
+app.get(urls.RESOLVE,  function(req, res, next) {
+    res.render('home.ejs', {
+        selected: 'home',
+         hideNav: false,
+            page: 'home',
+          });
+});
+
  app.get(urls.ABOUT, function(req, res, next) {
     res.render('about.ejs', {selected: 'about', hideNav: false, page: 'about'});
 });
