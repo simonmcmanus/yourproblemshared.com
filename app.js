@@ -236,8 +236,8 @@ app.post(urls.INBOUND, function(req, res, next) {
                  company: site,
                      url: url,
               resolveUrl: urls.get('RESOLVE', {
-                         hash: hash
-                      company: site
+                         hash: hash,
+                      company: site,
                            id: data.insertId
                         })
                     });
