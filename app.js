@@ -203,6 +203,11 @@ app.post(urls.INBOUND, function(req, res, next) {
     }
 
     var site = req.body.ToFull[0].Email.split('@')[1];
+
+    var crypto = require('crypto');
+    var name = req.body.FromFull.Email+req.body.Subject;
+    var hash = crypto.createHash('md5').update(name).digest("hex");
+
     ds.saveEmail({
         id: req.body.MessageID,
         company: site,
@@ -219,7 +224,8 @@ app.post(urls.INBOUND, function(req, res, next) {
         date: req.body.Date,
         inReplyToId: headers['In-Reply-To'] || "",
         messageId: headers['Message-ID'] || "",
-        referenceId: headers['References'] || ""
+        referenceId: headers['References'] || "",
+        hash: hash
     }, function(data, isFirst) {
        // only if its the first time. 
         if(data) {
@@ -227,8 +233,13 @@ app.post(urls.INBOUND, function(req, res, next) {
                 var url = 'http://yourproblemshared.com/'+site+'/mail/'+data.insertId+'/';
                 fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
-                        company: site,
-                         url: url
+                 company: site,
+                     url: url,
+              resolveUrl: urls.get('RESOLVE', {
+                         hash: hash
+                      company: site
+                           id: data.insertId
+                        })
                     });
                     sendEmail(req.body.From, null, 'Relax, your problem has been shared', body);
                 });
