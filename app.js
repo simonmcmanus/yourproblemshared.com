@@ -35,12 +35,22 @@ app.register('.ejs', ejs);
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
  app.get(urls.HOME, function(req, res, next) {
-    res.render('comingsoon.ejs', {selected: 'home', hideNav:true, page: 'home'});
+    res.render('comingsoon.ejs', {
+        selected: 'home', 
+        hideNav:true, 
+        page: 'home',
+        isResolved: 0
+    });
 });
 
 
  app.get('/home',  function(req, res, next) {
-    res.render('home.ejs', {selected: 'home', hideNav:false, page: 'home'});
+    res.render('home.ejs', {
+        selected: 'home',
+         hideNav:false,
+         page: 'home',
+         isResolved: false
+     });
 });
 
   app.get('/sample',  function(req, res, next) {
@@ -51,6 +61,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
          company: 'Sample Company',
          url: 'http://yourproblemshared.com/problems/company.com/mail/21',
          isPre: true,
+         isResolved: false,
          resolvedUrl: 'http://yourproblemshared.com/resolve'
 
      });
@@ -67,6 +78,7 @@ app.get(urls.RESOLVE,  function(req, res, next) {
             // send email to say emails marked as resolved.
             res.render('resolved.ejs', {
                  hideNav: false,
+                    isResolved: 1,
                     page: '',
                 selected: ''
             });  
@@ -89,11 +101,21 @@ app.get(urls.RESOLVE,  function(req, res, next) {
 });
 
  app.get(urls.ABOUT, function(req, res, next) {
-    res.render('about.ejs', {selected: 'about', hideNav: false, page: 'about'});
+    res.render('about.ejs', {
+        selected: 'about', 
+        hideNav: false, 
+        page: 'about',
+        isResolved: false
+    });
 });
 
  app.get(urls.CONTACT, function(req, res, next) {
-    res.render('contact.ejs', {selected: 'contact', hideNav: false, page: 'contact'});
+    res.render('contact.ejs', {
+        selected: 'contact', 
+        hideNav: false, 
+        page: 'contact',
+        isResolved: false
+    });
 });
 
 
@@ -108,7 +130,8 @@ app.get(urls.EMAIL, function(req, res, next) {
             moment: require('moment'),
             page: 'browse',
             hideNav: false, 
-            encoder: encoder.encoder
+            encoder: encoder.encoder, 
+            isResolved: replies[0].resolved
         });
     });
 });
@@ -125,6 +148,7 @@ app.get(urls.BROWSE, function(req, res, next) {
                 selected: 'browse', 
                 moment: require('moment'),
                 hideNav: false,
+                isResolved: false,
                 encoder: encoder.encoder
             });
         }else {

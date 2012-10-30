@@ -11,27 +11,31 @@ while(c--) {
 		var email = data[c];
 			%>
 			<div class="email resolved<%=email.resolved%>" >
-			<img src="/assets/img/email.png" width="100" class="floatRight">
+				<div class="wrapper">
+				<img src="/assets/img/email.png" width="100" class="floatRight">
 
-			<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
-			<h4><%=encoder.htmlDecode(unescape(email.subject))%></a></h4>
-			<h5><%=encoder.htmlDecode(unescape(email.company))%></h5> 
-				<%
-			if(email.htmlBody === "") { // no html so use text in pre
+				<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
+				<h4><%=encoder.htmlDecode(unescape(email.subject))%></a></h4>
+					<%
+				if(email.htmlBody === "") { // no html so use text in pre
+					%>
+						<pre>
+						<%-unescape(email.textBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]'))%>
+						</pre>
+					<%
+				}else { // use html
+					console.log('USE JTL');
+					%>
+					<%-encoder.htmlDecode(unescape(email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]')))%>
+					<%
+				}
 				%>
-					<pre>
-					<%-unescape(email.textBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]'))%>
-					</pre>
-				<%
-			}else { // use html
-				console.log('USE JTL');
-				%>
-				<%-encoder.htmlDecode(unescape(email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]')))%>
-				<%
-			}
-			%>
-			<strong class="floatRight"><%-moment(new Date(unescape(email.date))).fromNow()%></strong>
-
+			</div>
+			<div class="footer">
+				Sent to <strong><%=encoder.htmlDecode(unescape(email.company))%></strong>&nbsp;
+			
+			<strong class="ago"><%-moment(new Date(unescape(email.date))).fromNow()%></strong>
+			</div>
 			</div>
 <%
 }
