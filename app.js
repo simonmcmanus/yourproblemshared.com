@@ -226,19 +226,19 @@ app.post(urls.INBOUND, function(req, res, next) {
         messageId: headers['Message-ID'] || "",
         referenceId: headers['References'] || "",
         hash: hash
-    }, function(data, isFirst) {
+    }, function(insertData, isFirst) {
        // only if its the first time. 
-        if(data) {
+        if(insertData) {
             if(+isFirst) {
-                var url = 'http://yourproblemshared.com/'+site+'/mail/'+data.insertId+'/';
+                var url = 'http://yourproblemshared.com/'+site+'/mail/'+insertData.insertId+'/';
                 fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
                  company: site,
                      url: url,
-              resolveUrl: urls.get('RESOLVE', {
+              resolveUrl: 'http://yourproblemshared.com'+urls.get('RESOLVE', {
                          hash: hash,
                       company: site,
-                           id: data.insertId
+                           id: insertData.insertId
                         })
                     });
                     sendEmail(req.body.From, null, 'Relax, your problem has been shared', body);
