@@ -30,9 +30,19 @@ while(c--){
 
 		<div class="body" >
 			<%
-			var out = mail[c].htmlBody.replace(new RegExp(reporter, 'g'), '[details removed]');
+			if(mail[c].htmlBody === "") { // no html so use text in pre
+				%>
+					<pre>
+					<%-unescape(mail[c].textBody.replace(new RegExp(reporter, 'g'), '[details removed]'))%>
+					</pre>
+				<%
+			}else { // use html
+				console.log('USE JTL');
+				%>
+				<%-encoder.htmlDecode(unescape(mail[c].htmlBody.replace(new RegExp(reporter, 'g'), '[details removed]')))%>
+				<%
+			}
 			%>
-			<%-encoder.htmlDecode(unescape(out))%>
 		</div>
 	</div>	
 </div>

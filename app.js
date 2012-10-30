@@ -176,8 +176,24 @@ app.post(urls.INBOUND, function(req, res, next) {
 
     var headers = sortHeaders(req.body.Headers);
 
-    if(!req.bodyToFull) {
-        res.send('ok');
+    // if(!req.bodyToFull) {
+    //     res.send('ok');
+    // }
+
+
+
+    if(req.body.ToFull[0].Email === 'cc@yourproblemshared.com'){
+        if(req.body.From === 'cc@yourproblemshared.com') {
+            return; // that shit cray.
+        }
+        fs.readFile('./views/emails/user-report-failed.ejs', 'utf8', function(error, data) {
+            var body = ejs.render(data, {
+                company: site,
+                 url: url
+            });
+            sendEmail(req.body.From, 'simon@yourproblemshared.com', 'Submission failed', body);
+        });
+        return;
     }
 
     var site = req.body.ToFull[0].Email.split('@')[1];
