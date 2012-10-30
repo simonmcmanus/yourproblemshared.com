@@ -60,17 +60,27 @@ app.get(urls.RESOLVE,  function(req, res, next) {
     ds.resolveEmail({
         id: req.params.id, 
         hash: req.params.hash
-    }, function(data, params) {
+    }, function(data, email) {
 
-        console.log(data.affectedRows);
+        console.log(data);
         if(data.affectedRows > 0) {
+            // send email to say emails marked as resolved.
             res.render('resolved.ejs', {
                  hideNav: false,
                     page: '',
                     selected: ''
-            });            
+            });  
+            fs.readFile('./views/emails/problem-resolved.ejs', 'utf8', function(error, data) {
+                sendEmail(email.toEmail, email.fromEmail, 'Issue Resolved', data);
+            });
         }else {
-            res.send('There was a problem. Please email simon@yourproblemshared.com');
+             res.render('resolveError.ejs', {
+                 hideNav: false,
+                    page: '',
+                    selected: ''
+            });       
+            
+         
         }
     });
 
@@ -243,7 +253,7 @@ app.post(urls.INBOUND, function(req, res, next) {
        // only if its the first time. 
         if(insertData) {
             if(+isFirst) {
-                var url = 'http://yourproblemshared.com/'+site+'/mail/'+insertData.insertId+'/';
+                var url = 'http://yourproblemshared.com/problems/'+site+'/mail/'+insertData.insertId+'/';
                 fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
                  company: site,
