@@ -49,6 +49,12 @@ font-weight:400;
 	font-size:0.9em;
 
 }
+
+.company {
+	float:right;
+	position: relative;
+	top: 0;
+}
 html body .resolved0 {
 	border: 1px solid #F7D3CD;
 }

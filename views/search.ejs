@@ -1,11 +1,22 @@
 
 
-<h2><%=company%></h2>
+<div class="company"></div><h2><%=company%></h2>
 <%
-if(company === 'browse' ) {
+if(company === 'Browse' ) {
 	var msg = 'A list of the most recent emails copied to cc@yourproblemshared.com:';
 }else {
-	var msg = 'The most recent problems sent to '+company; 
+
+
+	%>
+<script>
+	$.get('/<%=company%>/logo', function(data) {
+
+		$('.company').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
+	});
+</script>
+	<%
+
+	var msg = 'The most recent problems sent to '+company+':'; 
 }
 %>
 <p><%=msg%></p>

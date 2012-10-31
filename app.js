@@ -10,6 +10,7 @@ var express = require('express');
 //var ds = require('./lib/redis.js');
 var ds = require('./lib/mysql.js');
 var fs = require('fs');
+var request = require('request');
 
 var app = express.createServer();
 //var sizlate = require('sizlate');
@@ -126,6 +127,17 @@ app.get(urls.RESOLVE,  function(req, res, next) {
     });
 });
 
+
+ app.get(urls.LOGO, function(req, res, next) {
+    console.log(req.params.company);
+    console.log('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='+req.params.company+'+logo&imgsz=icon');
+    request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='+req.params.company+'+logo&imgsz=small&as_filetype=png', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        
+        res.send(JSON.parse(body));
+      }
+    })
+});
 
 app.get(urls.EMAIL, function(req, res, next) {
     var moment = require('moment');

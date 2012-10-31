@@ -1,1 +1,11 @@
+
+<div class="company"></div><h2><%=company%></h2>
+
+<script>
+	$.get('/<%=company%>/logo', function(data) {
+
+		$('.company').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
+	});
+</script>
+
 No Results
