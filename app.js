@@ -50,7 +50,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
         selected: 'home',
          hideNav:false,
          page: 'home',
-         isResolved: 1,
+         isResolved: false,
          message :''
      });
 });

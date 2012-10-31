@@ -19,7 +19,6 @@ while(c--){
 <div class="speachWrapper <%=isReporter%>">
 	<div id="email"  >
 		<h2><%-unescape(mail[c].subject)%></h2>
-		<h4><%-moment(new Date(unescape(mail[c].date))).fromNow()%></h4>
 
 		<div class="body" >
 			<%
@@ -36,6 +35,10 @@ while(c--){
 			}
 			%>
 		</div>
+			<div class="emailFooter">
+				Sent <%-moment(new Date(unescape(mail[c].date))).fromNow()%>
+			</div>
+
 	</div>	
 </div>
 	<%	
