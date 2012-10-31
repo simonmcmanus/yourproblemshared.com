@@ -39,7 +39,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
         selected: 'home', 
         hideNav:true, 
         page: 'home',
-        isResolved: 0,
+        isResolved: false,
         message :''
     });
 });
@@ -50,7 +50,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
         selected: 'home',
          hideNav:false,
          page: 'home',
-         isResolved: false,
+         isResolved: 1,
          message :''
      });
 });
@@ -173,6 +173,7 @@ app.get(urls.BROWSE, function(req, res, next) {
                 urls: urls, 
                 page: 'browse',
                 hideNav: false, 
+                isResolved: false,
                 selected: 'browse',
                 message :''
             });
@@ -210,6 +211,7 @@ app.get(urls.COMPANY , function(req, res, next) {
                 hideNav: false,
                 page: 'browse',
                 moment: require('moment'),
+                isResolved:false,
                 urls: urls,
                 message :''
             });
@@ -217,6 +219,7 @@ app.get(urls.COMPANY , function(req, res, next) {
             res.render('search-no-results.ejs', {  
                 urls: urls, 
                 page: 'browse',
+                isResolved: false,
                 hideNav: false, 
                 selected: 'browse',
                 message :''
@@ -306,6 +309,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                 fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
                  company: site,
+                        to: req.body.ToFull[0].Email,
                      url: url,
               resolveUrl: 'http://yourproblemshared.com'+urls.get('RESOLVE', {
                          hash: hash,

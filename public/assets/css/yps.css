@@ -203,7 +203,11 @@ border-radius: 4px;
 position: relative;
 }
 
-#content::before {
+#content.home::before,
+#content.about::before,
+#content.contact::before,
+#content.browse::before
+{
 	content: "";
 	position: absolute;
 	top: -14px;
@@ -213,7 +217,12 @@ position: relative;
 	display: block;
 	width: 0;
 }
-#content::after {
+
+#content.home::after,
+#content.about::after,
+#content.contact::after,
+#content.browse::after
+ {
 	content: "";
 	position: absolute;
 	top: -13px;
