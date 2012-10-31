@@ -88,10 +88,10 @@ app.get(urls.RESOLVE,  function(req, res, next) {
                 message :''
             });  
             fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
-                sendEmail(email.fromEmail, null, 'Issue Resolved', data);
+                sendEmail(email.fromEmail, null, 'Issue Resolved - '+email.subject, data);
             });
             fs.readFile('./views/emails/site-problem-resolved.ejs', 'utf8', function(error, data) {
-                sendEmail(email.toEmail, null, 'Issue Resolved', data);
+                sendEmail(email.toEmail, null, 'Issue Resolved - '+email.subject, data);
             });
         }else {
              res.render('resolveError.ejs', {
@@ -348,7 +348,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                            id: insertData.insertId
                         })
                     });
-                    sendEmail(req.body.From, null, 'Relax, your problem ('+req.body.Subject.slice(0, 8)+'..) has been shared', body);
+                    sendEmail(req.body.From, null, 'Relax, your problem ('+req.body.Subject.slice(0, 12)+'..) has been shared', body);
                 });
 
                 fs.readFile('./views/emails/site-problem-reported.ejs', 'utf8', function(error, data) {
