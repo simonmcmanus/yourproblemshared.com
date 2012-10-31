@@ -57,7 +57,7 @@ font-weight:400;
 	top: 0;
 }
 html body .resolved0 {
-	border: 1px solid #EECBC2;
+	border: 1px solid #ECB0B0;
 }
 
 html body #wrapper #content .message {
@@ -67,7 +67,7 @@ html body #wrapper #content .message {
 }
 
 html body .resolved1 {
-	border: 1px solid #B6D8B7;
+	border: 1px solid #859C85;
 }
 
 
@@ -79,6 +79,25 @@ html body .resolved1 .footer {
 
 	background: #B6D8B7;
 }
+
+html body .resolved1 .footer {
+	border-top: 1px solid #859C85;
+}
+
+html body .resolved1 .message {
+	border-bottom: 1px solid #859C85;
+}
+
+html body .resolved0 .footer {
+	border-top: 1px solid #ECB0B0;
+}
+
+html body .resolved0 .message {
+	border-bottom: 1px solid #ECB0B0;
+}
+
+
+
 @media  (max-width: 500px) {
 	#wrapper {
 		margin: 0;
@@ -280,9 +299,9 @@ position: relative;
 
 }
 
-#content.resolved1::after
+#content.resolved1::before
 {
-	border-color: #EECBC2 transparent;
+	border-color: #859C85 transparent;
 }
 #content.resolved1::after
 {
@@ -322,13 +341,14 @@ h1:before {
 
 h2 {
 	margin-top: 0;
+	margin-bottom: 0;
 	color: #384874;
 	padding-top: 0;	
 }
 
 h4 {
 	margin: 0;
-	padding: 0px 0 15px !important
+	padding: 0px 0 4px !important
 }
 
 h5 {
@@ -442,7 +462,7 @@ background: #fff;	background-repeat: no-repeat;
 	margin:  10px 0;
 }
 .feature span {
-	padding: 5px 50px;
+	padding: 5px 15px;
 	font-weight:bold;	
 	text-decoration:none;
 	border-radius: 5px;
