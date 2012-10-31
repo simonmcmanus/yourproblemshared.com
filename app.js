@@ -358,7 +358,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                         company: site,
                             url: url
                     });
-                    sendEmail(req.body.ToFull[0].Email, null, 'ATTENTION REQUIRED - '+req.body.Subject.slice(0, 8)+'..', body);
+                    sendEmail(req.body.ToFull[0].Email, null, 'ATTENTION REQUIRED - '+req.body.Subject, body);
                 });
             }
             res.send('ok');
