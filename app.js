@@ -61,7 +61,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
          hideNav:false, 
          page: 'home',
          company: 'Sample Company',
-         url: 'http://yourproblemshared.com/problems/company.com/mail/21',
+         url: 'http://yourproblemshared.com/company.com/mail/21',
          isPre: true,
          isResolved: false,
          resolvedUrl: 'http://yourproblemshared.com/resolve',
@@ -305,7 +305,7 @@ app.post(urls.INBOUND, function(req, res, next) {
        // only if its the first time. 
         if(insertData) {
             if(+isFirst) {
-                var url = 'http://yourproblemshared.com/problems/'+site+'/mail/'+insertData.insertId+'/';
+                var url = 'http://yourproblemshared.com/'+site+'/mail/'+insertData.insertId+'/';
                 fs.readFile('./views/emails/user-problem-reported.ejs', 'utf8', function(error, data) {
                     var body = ejs.render(data, {
                  company: site,
