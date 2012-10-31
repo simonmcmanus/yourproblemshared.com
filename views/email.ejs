@@ -6,20 +6,14 @@
 
 <%
 var c = mail.length;
-var reporter = null;
+var reporter = mail[0].reporter;
 while(c--){
 			
-		if(!reporter) {
-			reporter = mail[c].reporter;
-			var isReporter = 'isReporter';
-		}else {
-
 			if(reporter === mail[c].fromEmail) {
 				var isReporter = 'isReporter';
 			} else {
 				var isReporter = 'notReporter';
 			}
-		}
 	
 %>
 <div class="speachWrapper <%=isReporter%>">

@@ -35,7 +35,7 @@ while(c--) {
      		if(email.resolved === 1) {
             	var msg = 'Problem was resolved  '+moment(+email.resolvedEpoch).fromNow()
         	}else {
-            var msg = 'Problem created '+moment(new Date(unescape(email.date))).fromNow() + ' and remains unresolved. :('
+            var msg = 'Problem reported to '+email.company+' '+moment(new Date(unescape(email.date))).fromNow() + ' and remains unresolved. :('
      	   }
 				%>
 

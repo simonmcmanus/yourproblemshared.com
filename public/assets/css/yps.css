@@ -326,7 +326,7 @@ i {
 #email {
 	padding: 10px;
 	background: #fff;
-	border: 1px solid #eee;
+	border: 1px solid #C9C9C9;
 	margin-bottom: 15px;
 	margin-left: 40px;
 	position: relative;
@@ -343,14 +343,14 @@ i {
 	height: 0px;
 	border-width: 6px 8px 6px 0px;
 	border-style: solid;
-	border-color:  transparent #eee;
+	border-color:  transparent #D8D8D8;
 	display: block;
 	width: 0;
 }
 
 
 #email::before {
-		border-color:  transparent #EEE;
+		border-color:  transparent #D8D8D8;
 }
 
 
@@ -361,11 +361,11 @@ i {
 
 
 #email::before {
-		border-color:  transparent #EEE;
+		border-color:  transparent #D8D8D8;
 }
 html body .speachWrapper.isReporter #email::after,
 html body .speachWrapper.isReporter #email::before {
-	right: -7px;
+	right: -6px;
 	border-width: 6px 0px 6px 8px;
 }
 
@@ -375,7 +375,7 @@ html body .speachWrapper.isReporter #email::before {
 
 html body .speachWrapper.notReporter #email::before,
 html body .speachWrapper.notReporter #email::after {
-		left: -7px;
+		left: -6px;
 
 }
 html body .speachWrapper.notReporter #email::before {
