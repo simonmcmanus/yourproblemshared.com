@@ -88,9 +88,11 @@ app.get(urls.RESOLVE,  function(req, res, next) {
                 message :''
             });  
             fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
+                console.log(data);
                 sendEmail(email.fromEmail, null, 'Issue Resolved - '+email.subject, data);
             });
             fs.readFile('./views/emails/site-problem-resolved.ejs', 'utf8', function(error, data) {
+                console.log(data);
                 sendEmail(email.toEmail, null, 'Issue Resolved - '+email.subject, data);
             });
         }else {
