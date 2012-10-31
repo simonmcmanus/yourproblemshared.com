@@ -95,6 +95,7 @@ app.get(urls.RESOLVE,  function(req, res, next) {
         }else {
              res.render('resolveError.ejs', {
                  hideNav: false,
+                 isResolved: false,
                     page: '',
                 selected: '',
                 message :''

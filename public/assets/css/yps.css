@@ -286,6 +286,12 @@ padding: 0;
 	color: #384874;
 }
 
+.logoImg {
+	top: 13px;
+	left: -10px;
+	position: relative;
+}
+
 h1:before {
 	content: "";
 	background: red;
