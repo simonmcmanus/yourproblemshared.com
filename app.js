@@ -88,10 +88,10 @@ app.get(urls.RESOLVE,  function(req, res, next) {
                 message :''
             });  
             fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
-                sendEmail(email[0].fromEmail, null, 'Issue Resolved - '+email.subject, data);
+                sendEmail(email[0].fromEmail, null, 'Issue Resolved - '+email[0].subject, data);
             });
             fs.readFile('./views/emails/site-problem-resolved.ejs', 'utf8', function(error, data) {
-                sendEmail(email[0].toEmail, null, 'Issue Resolved - '+email.subject, data);
+                sendEmail(email[0].toEmail, null, 'Issue Resolved - '+email[0].subject, data);
             });
         }else {
              res.render('resolveError.ejs', {
