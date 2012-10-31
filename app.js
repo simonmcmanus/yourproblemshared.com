@@ -88,10 +88,10 @@ app.get(urls.RESOLVE,  function(req, res, next) {
                 message :''
             });  
             fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
-                sendEmail(email[0].fromEmail, null, 'Issue Resolved - '+email[0].subject, data);
+                sendEmail(email[0].fromEmail, null, 'Issue Resolved - '+unescape(email[0].subject), data);
             });
             fs.readFile('./views/emails/site-problem-resolved.ejs', 'utf8', function(error, data) {
-                sendEmail(email[0].toEmail, null, 'Issue Resolved - '+email[0].subject, data);
+                sendEmail(email[0].toEmail, null, 'Issue Resolved - '+unescape(email[0].subject), data);
             });
         }else {
              res.render('resolveError.ejs', {
@@ -153,7 +153,7 @@ app.get(urls.EMAIL, function(req, res, next) {
         if(replies[0].resolved === 1) {
             var msg = 'Problem was <strong>resolved  '+moment(+replies[0].resolvedEpoch).fromNow()+'</strong>'
         }else {
-            var msg = 'Problem reported to <strong>'+replies[0].company+'</strong> '+moment(new Date(unescape(replies[0].date))).fromNow()+' and remains <strong>UNRESOLVED</strong> '
+            var msg = 'Problem reported to <strong><a href="/'+replies[0].company+'">'+replies[0].company+'</a></strong> '+moment(new Date(unescape(replies[0].date))).fromNow()+' and remains <strong>UNRESOLVED</strong> '
         }
         res.render('email.ejs', {
             mail: replies,

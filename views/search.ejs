@@ -14,7 +14,8 @@ if(company === 'Browse' ) {
 		$('.company').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
 	});
 </script>
-<h3>Resolved <%=totals.resolved%> of <%=+totals.resolved + +totals.unresolved %> problems</h3>
+<strong><%=+totals.resolved  %> Resolved</strong><br />
+<strong><%=totals.unresolved%>  Unresolved</strong>
 	<%
 
 
