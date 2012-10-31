@@ -1,7 +1,14 @@
-<h2>Browse</h2>
-<p>
-A list of the most recent emails copied to cc@yourproblemshared.com:
-</p>
+
+
+<h2><%=company%></h2>
+<%
+if(company === 'browse' ) {
+	var msg = 'A list of the most recent emails copied to cc@yourproblemshared.com:';
+}else {
+	var msg = 'The most recent problems sent to '+company; 
+}
+%>
+<p><%=msg%></p>
 <div>
 
 <%
@@ -35,11 +42,11 @@ while(c--) {
      		if(email.resolved === 1) {
             	var msg = 'Problem was resolved  '+moment(+email.resolvedEpoch).fromNow()
         	}else {
-            var msg = 'Problem reported to '+email.company+' '+moment(new Date(unescape(email.date))).fromNow() + ' and remains unresolved. :('
+            var msg = 'Problem reported to <a href="/'+email.company+'">'+email.company+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>. :('
      	   }
 				%>
 
-<%=msg%></div>
+<%-msg%></div>
 			</div>
 <%
 }

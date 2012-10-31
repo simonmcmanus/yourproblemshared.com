@@ -160,6 +160,7 @@ app.get(urls.BROWSE, function(req, res, next) {
             res.render('search.ejs', {  
                 data: data.reverse(),
                 urls: urls, 
+                company: 'Browse',
                 page: 'browse',
                 selected: 'browse', 
                 moment: require('moment'),
@@ -207,6 +208,7 @@ app.get(urls.COMPANY , function(req, res, next) {
             res.render('search.ejs', { 
                 data: data, 
                 selected: '',
+                company: req.params.company,
                 encoder: encoder.encoder,
                 hideNav: false,
                 page: 'browse',
@@ -220,6 +222,7 @@ app.get(urls.COMPANY , function(req, res, next) {
                 urls: urls, 
                 page: 'browse',
                 isResolved: false,
+                company: req.params.company,
                 hideNav: false, 
                 selected: 'browse',
                 message :''
