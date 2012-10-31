@@ -14,7 +14,9 @@ if(company === 'Browse' ) {
 		$('.company').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
 	});
 </script>
+<h3>Resolved <%=totals.resolved%> of <%=+totals.resolved + +totals.unresolved %> problems</h3>
 	<%
+
 
 	var msg = 'The most recent problems sent to '+company+':'; 
 }
@@ -53,7 +55,7 @@ while(c--) {
      		if(email.resolved === 1) {
             	var msg = 'Problem was resolved  '+moment(+email.resolvedEpoch).fromNow()
         	}else {
-            var msg = 'Problem reported to <a href="/'+email.company+'">'+email.company+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>. :('
+            var msg = 'Problem reported to <a href="/'+email.company+'">'+email.company+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>.'
      	   }
 				%>
 

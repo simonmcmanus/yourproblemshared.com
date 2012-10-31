@@ -117,7 +117,7 @@ app.get(urls.RESOLVE,  function(req, res, next) {
     });
 });
 
- app.get(urls.CONTACT, function(req, res, next) {
+app.get(urls.CONTACT, function(req, res, next) {
     res.render('contact.ejs', {
         selected: 'contact', 
         hideNav: false, 
@@ -126,6 +126,9 @@ app.get(urls.RESOLVE,  function(req, res, next) {
         message :''
     });
 });
+
+
+
 
 
  app.get(urls.LOGO, function(req, res, next) {
@@ -144,6 +147,7 @@ app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id,
     }, function(replies) {
+
 //        replies.push(email);
 //        
         if(replies[0].resolved === 1) {
@@ -215,12 +219,14 @@ app.post(urls.SEARCH, function(req, res, next) {
 app.get(urls.COMPANY , function(req, res, next) {
     ds.company({
         company: req.params.company
-    }, function(data) {
+    }, function(data, totals) {
+        console.log('totals', totals);
         if(data.length > 0) {
             res.render('search.ejs', { 
                 data: data, 
                 selected: '',
                 company: req.params.company,
+                totals: totals[0],
                 encoder: encoder.encoder,
                 hideNav: false,
                 page: 'browse',
@@ -233,6 +239,7 @@ app.get(urls.COMPANY , function(req, res, next) {
             res.render('search-no-results.ejs', {  
                 urls: urls, 
                 page: 'browse',
+                totals: totals[0],
                 isResolved: false,
                 company: req.params.company,
                 hideNav: false, 
@@ -241,6 +248,15 @@ app.get(urls.COMPANY , function(req, res, next) {
             });
         }
     });
+});
+
+
+app.get(urls.TOTALS, function(req, res, next) {
+   ds.totals({
+    company: req.params.company
+   }, function(data) {
+        res.send(data);
+   });
 });
 
 
@@ -332,7 +348,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                            id: insertData.insertId
                         })
                     });
-                    sendEmail(req.body.From, null, 'Relax, your problem has been shared', body);
+                    sendEmail(req.body.From, null, 'Relax, your problem ('+req.body.Subject.slice(0, 8)+'..) has been shared', body);
                 });
 
                 fs.readFile('./views/emails/site-problem-reported.ejs', 'utf8', function(error, data) {
@@ -342,7 +358,7 @@ app.post(urls.INBOUND, function(req, res, next) {
                         company: site,
                             url: url
                     });
-                    sendEmail(req.body.ToFull[0].Email, null, 'ATTENTION REQUIRED', body);
+                    sendEmail(req.body.ToFull[0].Email, null, 'ATTENTION REQUIRED - '+req.body.Subject.slice(0, 8)+'..', body);
                 });
             }
             res.send('ok');
