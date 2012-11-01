@@ -33,10 +33,10 @@ console.log('---->', email.subject);
 			%>
 			<div class="email resolved<%=email.resolved%>" >
 				<div class="wrapper">
-				<img src="/assets/img/email.png" width="100" class="floatRight">
+				<img src="/assets/img/email.png" width="100" alt="Email" class="floatRight">
 
-				<a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>">
-				<h4><%=encoder.htmlDecode(unescape(email.subject))%></a></h4>
+				
+				<h4><a href="<%=urls.get('EMAIL', { id: email.id, company: email.company })%>"><%=encoder.htmlDecode(unescape(email.subject))%></a></h4>
 					<%
 				if(email.htmlBody === "") { // no html so use text in pre
 					%>
