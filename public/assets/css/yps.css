@@ -51,6 +51,11 @@ font-weight:400;
 
 }
 
+
+html body pre {
+	word-wrap: break-word;
+	max-width: 832px;
+}
 .company {
 	float:right;
 	position: relative;

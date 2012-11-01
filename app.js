@@ -61,7 +61,7 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
         selected: 'home',
          hideNav:false, 
          page: 'home',
-         company: 'Sample Company',
+         company: 'sample.com',
          url: 'http://yourproblemshared.com/company.com/mail/21',
          isPre: true,
          isResolved: false,
