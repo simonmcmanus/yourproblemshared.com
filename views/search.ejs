@@ -45,7 +45,7 @@ console.log('---->', email.subject);
 						</pre>
 					<%
 				}else { // use html
-						var a  = unescape(email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]'));
+						var a  = encoder.htmlDecode(unescape(email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]')));
 					%>
 					<%-a%>
 					<%
