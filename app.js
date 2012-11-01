@@ -190,6 +190,7 @@ app.get(urls.BROWSE, function(req, res, next) {
                 urls: urls, 
                 page: 'browse',
                 hideNav: false, 
+                company: 'Browse',
                 isResolved: false,
                 selected: 'browse',
                 message :''
@@ -224,12 +225,12 @@ app.get(urls.COMPANY , function(req, res, next) {
         if(data.length > 0) {
             res.render('search.ejs', { 
                 data: data, 
-                selected: '',
+                selected: 'browse',
                 company: req.params.company,
                 totals: totals[0],
                 encoder: encoder.encoder,
                 hideNav: false,
-                page: 'browse',
+                page: 'company',
                 moment: require('moment'),
                 isResolved:false,
                 urls: urls,

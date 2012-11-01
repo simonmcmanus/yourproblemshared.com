@@ -1,6 +1,6 @@
 
-
-<div class="company"></div><h2><%=company%></h2>
+<div class="companyWrapper">
+	<div class="company"></div><h2><%=company%></h2>
 <%
 if(company === 'Browse' ) {
 	var msg = 'A list of the most recent emails copied to cc@yourproblemshared.com:';
@@ -14,8 +14,7 @@ if(company === 'Browse' ) {
 		$('.company').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
 	});
 </script>
-<strong><%=+totals.resolved  %> Resolved</strong><br />
-<strong><%=totals.unresolved%>  Unresolved</strong>
+<strong><%=+totals.resolved  %> of <%=+totals.unresolved + +totals.resolved%>  Resolved</strong><br />
 	<%
 
 
@@ -23,13 +22,14 @@ if(company === 'Browse' ) {
 }
 %>
 <p><%=msg%></p>
+</div>
 <div>
 
 <%
 var c = data.length;
-
 while(c--) {
 		var email = data[c];
+console.log('---->', email.subject);
 			%>
 			<div class="email resolved<%=email.resolved%>" >
 				<div class="wrapper">
@@ -45,8 +45,9 @@ while(c--) {
 						</pre>
 					<%
 				}else { // use html
+						var a  = unescape(email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]'));
 					%>
-					<%-encoder.htmlDecode(unescape(email.htmlBody.replace(new RegExp(email.fromEmail, 'g'), '[details removed]')))%>
+					<%-a%>
 					<%
 				}
 				%>

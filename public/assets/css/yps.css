@@ -397,6 +397,15 @@ i {
 #email::before {
 		border-color:  transparent #D8D8D8;
 }
+
+
+.company .companyWrapper {
+	background: #fff !important;
+	margin:  -20px -20px -0px -20px;
+	padding: 10px;
+	border-radius: 5px 5px 0 0 ;
+	border-bottom: 1px solid #eee;
+}
 html body .speachWrapper.isReporter #email::after,
 html body .speachWrapper.isReporter #email::before {
 	right: -6px;
@@ -452,8 +461,14 @@ background: #fff;	background-repeat: no-repeat;
 	background-position: bottom right;
 }
 
+html body .email h4 a {
+		display: inline-block;
+		margin-right: 90px;
+}
+
 .email .wrapper {
 	padding: 10px;
+	min-height: 56px;
 }
 
 .feature {
