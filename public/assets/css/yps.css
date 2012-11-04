@@ -130,10 +130,13 @@ html body .resolved0 .message {
 }
 @media  (max-width: 400px) {
 	.nav li {
-		font-size:0.8em !important;
+		font-size:0.7em !important;
 	}
 	h1 {
-		font-size:1.6em;
+		font-size:1.4em;
+	}
+	h1 img {
+		display: none;
 	}
 	#wrapper {
 		margin: 0;
