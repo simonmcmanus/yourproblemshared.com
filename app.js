@@ -353,7 +353,6 @@ app.post(urls.INBOUND, function(req, res, next) {
                 });
 
                 fs.readFile('./views/emails/site-problem-reported.ejs', 'utf8', function(error, data) {
-                    console.log('>>>',arguments);
                     var body = ejs.render(data, {
                           isPre: false,
                         company: site,
