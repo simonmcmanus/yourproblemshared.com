@@ -35,18 +35,18 @@ app.register('.ejs', ejs);
 
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
- app.get(urls.HOME, function(req, res, next) {
-    res.render('comingsoon.ejs', {
-        selected: 'home', 
-        hideNav:true, 
-        page: 'home',
-        isResolved: false,
-        message :''
-    });
-});
+//  app.get(urls.HOME, function(req, res, next) {
+//     res.render('comingsoon.ejs', {
+//         selected: 'home', 
+//         hideNav:true, 
+//         page: 'home',
+//         isResolved: false,
+//         message :''
+//     });
+// });
 
 
- app.get('/home',  function(req, res, next) {
+ app.get(urls.HOME,  function(req, res, next) {
     res.render('home.ejs', {
         selected: 'home',
          hideNav:false,

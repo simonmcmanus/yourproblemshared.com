@@ -102,7 +102,9 @@ html body .resolved0 .message {
 }
 
 
-
+h1  img {
+	border: 0;
+}
 @media  (max-width: 570px) {
 	.nav li {
 		font-size:0.7em !important;
@@ -252,6 +254,10 @@ position: relative;
 	border-color: #FAFAF5 transparent;
 	display: block;
 	width: 0;
+}
+
+#content.browse.company::after {
+	border-color: #fff transparent;
 }
 
 #content.home::before,
