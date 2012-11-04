@@ -132,12 +132,12 @@ app.get(urls.CONTACT, function(req, res, next) {
 
 
  app.get(urls.LOGO, function(req, res, next) {
-    console.log(req.params.company);
-    console.log('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='+req.params.company+'+logo&imgsz=icon');
     request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='+req.params.company+'+logo&imgsz=small&as_filetype=png', function (error, response, body) {
       if (!error && response.statusCode == 200) {
         
         res.send(JSON.parse(body));
+      }else {
+        console.log('error', error);
       }
     })
 });
@@ -221,7 +221,6 @@ app.get(urls.COMPANY , function(req, res, next) {
     ds.company({
         company: req.params.company
     }, function(data, totals) {
-        console.log('totals', totals);
         if(data.length > 0) {
             res.render('search.ejs', { 
                 data: data, 
