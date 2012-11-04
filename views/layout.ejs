@@ -1,9 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
+  <!--
+
+   Code is pretty terrible. I know. Please don't judge me. 
+
+  -->
   <head>
     <meta charset="utf-8">
-    <title>yourproblemshared.com</title>
+    <title>YourProblemShared.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -43,19 +49,15 @@
             if(!hideNav){
             %>
         <div class="navbar">
-
               <ul class="nav">
                 <li class="<%if(selected==='home'){%>active<%}%>"><a href="/home" data-page='home'>Home</a></li>
                 <li class="<%if(selected==='browse'){%>active<%}%>"><a href="/browse"  data-page='browse'>Browse</a></li>
                 <li class="<%if(selected==='about'){%>active<%}%>"><a href="/about"  data-page='about'>About</a></li>
                 <li class="<%if(selected==='contact'){%>active<%}%>"><a href="/contact"  data-page='contact'>Contact</a></li>
-
               </ul>
   <!-- <form class="navbar-search pull-left" action="/company/search/" method="post">
               <input type="text" name="term" class="search-query span2" placeholder="Search">
             </form> -->
-
-        
       </div>
       <%
       }%>

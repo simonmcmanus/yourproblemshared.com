@@ -103,32 +103,7 @@ html body .resolved0 .message {
 
 
 
-@media  (max-width: 500px) {
-	#wrapper {
-		margin: 0;
-	}
-	/*  horrid :( it gets worse */
-	#content.home::before,
-	#content.home::after {
-		left: 28px !important;
-	}
-
-	#content.about::before,
-	#content.about::after {
-		 left: 227px !important;
-	}
-
-	#content.contact::before,
-	#content.contact::after {
-		left: 329px !important;
-	}
-
-	#content.browse::before,
-	#content.browse::after {
-		left: 125px !important;
-	}
-}
-@media  (max-width: 400px) {
+@media  (max-width: 570px) {
 	.nav li {
 		font-size:0.7em !important;
 	}
@@ -153,17 +128,17 @@ html body .resolved0 .message {
 
 	#content.about::before,
 	#content.about::after {
-		 left: 170px !important;
+		 left: 158px !important;
 	}
 
 	#content.contact::before,
 	#content.contact::after {
-		left: 249px !important;
+		left: 231px !important;
 	}
 
 	#content.browse::before,
 	#content.browse::after {
-		left: 95px !important;
+		left: 86px !important;
 	}
 }
 
