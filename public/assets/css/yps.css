@@ -138,6 +138,10 @@ html body .resolved0 .message {
 	h1 img {
 		display: none;
 	}
+
+	.feature {
+		font-size: 0.9em !important;
+	}
 	#wrapper {
 		margin: 0;
 	}
