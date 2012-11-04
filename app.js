@@ -305,6 +305,7 @@ app.post(urls.INBOUND, function(req, res, next) {
         }
         fs.readFile('./views/emails/user-report-failed.ejs', 'utf8', function(error, data) {
             sendEmail(req.body.From, 'simon@yourproblemshared.com', 'Submission failed - '+req.body.Subject.slice(0, 14), data);
+            res.send('failed');
         });
         return;
     }
