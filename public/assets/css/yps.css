@@ -360,6 +360,10 @@ i {
 	position: relative;
 }
 
+#email .body {
+	padding-top: 10px !important;
+}
+
 
 #email::before,
 #email::after {

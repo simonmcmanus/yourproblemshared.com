@@ -1,6 +1,6 @@
 
 <div class="companyWrapper">
-	<div class="company"></div><h2><%=company%></h2>
+	<div class="company companyImg"></div><h2><%=company%></h2>
 <%
 if(company === 'Browse' ) {
 	var msg = 'A list of the most recent emails copied to cc@yourproblemshared.com:';
@@ -11,7 +11,7 @@ if(company === 'Browse' ) {
 <script>
 	$.get('/<%=company%>/logo', function(data) {
 
-		$('.company').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
+		$('.companyImg').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
 	});
 </script>
 <strong><%=+totals.resolved  %> of <%=+totals.unresolved + +totals.resolved%>  Resolved</strong><br />
@@ -29,7 +29,6 @@ if(company === 'Browse' ) {
 var c = data.length;
 while(c--) {
 		var email = data[c];
-console.log('---->', email.subject);
 			%>
 			<div class="email resolved<%=email.resolved%>" >
 				<div class="wrapper">
