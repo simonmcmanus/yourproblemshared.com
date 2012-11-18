@@ -56,6 +56,12 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
      });
 });
 
+app.post(urls.FEEDBACK,  function(req, res, next) {
+    sendEmail('simon@yourproblemshared.com', null, 'Feedback', req.body.feedback);
+    res.send('ok');
+});
+
+
   app.get('/sample',  function(req, res, next) {
     res.render('emails/site-problem-reported.ejs', {
         selected: 'home',
@@ -72,8 +78,21 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 });
 
 
-
 app.get(urls.RESOLVE,  function(req, res, next) {
+    res.render('resolve.ejs', {
+        selected: 'browse',
+         hideNav:false, 
+         isResolved: false,
+         message: '',
+         page: 'home',
+         company: req.params.company,
+         id: req.params.id,
+         hash: req.params.hash
+     });
+});
+
+
+app.get(urls.DORESOLVE,  function(req, res, next) {
     ds.resolveEmail({
         id: req.params.id, 
         hash: req.params.hash
@@ -153,7 +172,7 @@ app.get(urls.EMAIL, function(req, res, next) {
         if(replies[0].resolved === 1) {
             var msg = '<strong>Resolved  '+moment(+replies[0].resolvedEpoch).fromNow()+'</strong>'
         }else {
-            var msg = 'Reported to <strong><a href="/'+replies[0].company+'">'+replies[0].company+'</a></strong> '+moment(new Date(unescape(replies[0].date))).fromNow()+' and remains <strong>UNRESOLVED</strong> '
+            var msg = 'Reported to <strong><a href="/'+replies[0].companyUrl+'">'+replies[0].companyName+'</a></strong> '+moment(new Date(unescape(replies[0].date))).fromNow()+' and remains <strong>UNRESOLVED</strong> '
         }
         res.render('email.ejs', {
             mail: replies,
@@ -180,6 +199,7 @@ app.get(urls.BROWSE, function(req, res, next) {
                 page: 'browse',
                 selected: 'browse', 
                 moment: require('moment'),
+                companyName: 'Browse',
                 hideNav: false,
                 isResolved: false,
                 encoder: encoder.encoder,
@@ -218,14 +238,32 @@ app.post(urls.SEARCH, function(req, res, next) {
 
 
 app.get(urls.COMPANY , function(req, res, next) {
+
+
+
+    ds.fetchParentDomain(req.params.company, function(parentDomain) {
+        console.log('pd', parentDomain);
+        if(parentDomain.length < 1) {
+            console.log('not listed - might be the primary');
+        }else {
+            if(parentDomain[0].url != req.params.company) {
+                res.redirect(parentDomain[0].url);
+                return;
+//                console.log('isPrimamry');
+            }
+        }
+    });
+
     ds.company({
         company: req.params.company
     }, function(data, totals) {
+        console.log(data);
         if(data.length > 0) {
             res.render('search.ejs', { 
                 data: data, 
                 selected: 'browse',
                 company: req.params.company,
+                companyName: data[0].companyName,
                 totals: totals[0],
                 encoder: encoder.encoder,
                 hideNav: false,

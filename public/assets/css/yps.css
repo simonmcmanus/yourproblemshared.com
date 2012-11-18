@@ -61,6 +61,52 @@ html body pre {
 	position: relative;
 	top: 0;
 }
+
+
+div.questions {
+margin-top:25px;
+
+}
+
+
+#moreDetails textarea {
+	min-width: 330px;
+	width: 90%;
+	max-width:800px;
+	height: 120px;
+	display: block;
+	font-family: 'freight-sans-pro', tahoma, arial;
+	font-size: 1.1em;
+	padding:10px;
+	margin: 10px;
+	background-position: 7px 10px;
+}
+
+.answer {
+	margin-top: 27px;
+}
+a.question,
+button {
+	margin: 0px 13px !important;
+	padding: 5px 10px 5px 25px;
+	border: 1px solid #ddd;
+	background: url(/assets/img/cross.png) no-repeat;
+	background-position: 7px 10px;
+
+}
+
+a.question.feedback,
+a.question.resolve {
+	background: url(/assets/img/tick.png) no-repeat;
+	background-position: 7px 10px;
+}
+
+
+a.question.back {
+	background: url(/assets/img/back.gif) no-repeat;
+		background-position: 6px 9px;
+}
+
 html body .resolved0 {
 	border: 1px solid #ECB0B0;
 }

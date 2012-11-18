@@ -1,26 +1,21 @@
-
-
 DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company` (
   `id` int(11) NOT NULL,
-  `Name` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `url` varchar(1000) DEFAULT NULL,
+  `sLogo` varchar(1000) DEFAULT NULL,
+  `bLogo` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment` (
-  `id` int(11) NOT NULL,
-  `page` varchar(45) DEFAULT NULL,  
-  `parent` varchar(45) DEFAULT NULL,
-  `username` varchar(45) DEFAULT NULL,
-  `comment` blob DEFAULT NULL,
+DROP TABLE IF EXISTS `domain`;
+CREATE TABLE `domain` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `companyId` int(11) NOT NULL, 
+  `domain` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
 
 
 DROP TABLE IF EXISTS `email`;
@@ -29,11 +24,11 @@ DROP TABLE IF EXISTS `email`;
 CREATE TABLE `email` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `company` varchar(400) DEFAULT NULL,
-  
   `isFirst` boolean DEFAULT NULL,
   `toEmail` varchar(500) DEFAULT NULL,
   `fromEmail` varchar(450) DEFAULT NULL,
   `reporter` varchar(450) DEFAULT NULL,
+  `companyId`int(11) DEFAULT NULL, 
   `ccEmail` varchar(450) DEFAULT NULL,
   `subject` varchar(450) DEFAULT NULL,
   `messageId` blob DEFAULT NULL,

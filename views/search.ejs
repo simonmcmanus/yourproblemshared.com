@@ -1,6 +1,6 @@
 
 <div class="companyWrapper">
-	<div class="company companyImg"></div><h2><%=company%></h2>
+	<div class="company companyImg"></div><h2><%=companyName%></h2>
 <%
 if(company === 'Browse' ) {
 	var msg = 'A list of the most recent emails copied to cc@yourproblemshared.com:';
@@ -54,7 +54,7 @@ while(c--) {
      		if(email.resolved === 1) {
             	var msg = 'Resolved  '+moment(+email.resolvedEpoch).fromNow()
         	}else {
-            var msg = 'Reported to <a href="/'+email.company+'">'+email.company+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>'
+            var msg = 'Reported to <a href="/'+email.companyUrl+'">'+email.companyName+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>'
      	   }
 				%>
 
