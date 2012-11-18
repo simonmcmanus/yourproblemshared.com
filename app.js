@@ -168,7 +168,9 @@ app.get(urls.EMAIL, function(req, res, next) {
     }, function(replies) {
 
 //        replies.push(email);
+//        console.lo
 //        
+console.log('>>', replies);
         if(replies[0].resolved === 1) {
             var msg = '<strong>Resolved  '+moment(+replies[0].resolvedEpoch).fromNow()+'</strong>'
         }else {
@@ -200,6 +202,7 @@ app.get(urls.BROWSE, function(req, res, next) {
                 selected: 'browse', 
                 moment: require('moment'),
                 companyName: 'Browse',
+                companyLogo: '',
                 hideNav: false,
                 isResolved: false,
                 encoder: encoder.encoder,
@@ -264,6 +267,8 @@ app.get(urls.COMPANY , function(req, res, next) {
                 selected: 'browse',
                 company: req.params.company,
                 companyName: data[0].companyName,
+                companyUrl: data[0].companyUrl,
+                companyLogo: data[0].companyLogo,
                 totals: totals[0],
                 encoder: encoder.encoder,
                 hideNav: false,

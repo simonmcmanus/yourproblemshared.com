@@ -3,8 +3,8 @@ CREATE TABLE `company` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `url` varchar(1000) DEFAULT NULL,
-  `sLogo` varchar(1000) DEFAULT NULL,
-  `bLogo` varchar(1000) DEFAULT NULL,
+  `logo` varchar(1000) DEFAULT NULL,
+  `message` blob DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

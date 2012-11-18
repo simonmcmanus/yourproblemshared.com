@@ -259,7 +259,7 @@ body {
 #content {
 
 	margin-top: 25px;
-	padding: 20px;
+	padding: 20px 20px 3px;
 	background: #FAFAF5;
 	-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
 -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 5px 0 rgba(0, 0, 0, 0.2);
@@ -490,9 +490,6 @@ html body .speachWrapper.notReporter #email::before {
 
 .floatRight {
 	float:right;
-	top: 5px;
-	right:5px;
-	position:absolute;
 }
 
 .email {
@@ -506,13 +503,15 @@ background: #fff;	background-repeat: no-repeat;
 }
 
 html body .email h4 a {
-		display: inline-block;
-		margin-right: 90px;
+	display: inline-block;
+	margin-right: 90px;
+	font-size: 1.4em;
+	padding: 4px 0 10px 0;
 }
 
 .email .wrapper {
 	padding: 10px;
-	min-height: 56px;
+	min-height: 66px;
 }
 
 .feature {

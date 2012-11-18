@@ -1,16 +1,19 @@
 
 <div class="companyWrapper">
-	<div class="company companyImg"></div><h2><%=companyName%></h2>
+	<div class="company companyImg"><img src="<%=companyLogo%>"></div><h2><%=companyName%></h2>
 <%
 if(company === 'Browse' ) {
 	var msg = 'A list of the most recent emails copied to cc@yourproblemshared.com:';
 }else {
 	%>
 <script>
+	if($('.companyImg').children().length == 0) {
 	$.get('/<%=company%>/logo', function(data) {
 
 		$('.companyImg').append('<img src="'+data.responseData.results[0].unescapedUrl+'"/>');
 	});
+
+	}
 </script>
 <strong><%=+totals.resolved  %> of <%=+totals.unresolved + +totals.resolved%>  Resolved</strong><br />
 	<%
@@ -54,7 +57,7 @@ while(c--) {
      		if(email.resolved === 1) {
             	var msg = 'Resolved  '+moment(+email.resolvedEpoch).fromNow()
         	}else {
-            var msg = 'Reported to <a href="/'+email.companyUrl+'">'+email.companyName+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>'
+            var msg = 'Reported to <a href="/'+(email.companyUrl || email.company)+'">'+(email.companyName||email.company)+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>'
      	   }
 				%>
 
