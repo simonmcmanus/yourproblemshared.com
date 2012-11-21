@@ -59,7 +59,8 @@ html body pre {
 .companyImg {
 	float:right;
 	position: relative;
-	top: 0;
+	top: 5px;
+	right: 5px;
 }
 
 
@@ -218,6 +219,10 @@ html body .navbar li {
 display: inline;	
 }
 
+div.social {
+	margin: 10px;
+}
+
 html body .navbar .nav {
 	padding-left: 3px;
 }
@@ -323,7 +328,7 @@ position: relative;
 
 #content.browse::before,
 #content.browse::after {
-	left: 108px;
+	left: 105px;
 }
 
 #content.resolved0::after
@@ -498,14 +503,14 @@ html body .speachWrapper.notReporter #email::before {
 	border:1px solid rgba(0, 0, 0, 0.1);
 	box-shadow: inset 2px 2px 1px #FAFAF5;
 	border-radius: 4px;
-background: #fff;	background-repeat: no-repeat;
+	background: #fff;	background-repeat: no-repeat;
 	background-position: bottom right;
 }
 
 html body .email h4 a {
 	display: inline-block;
 	margin-right: 90px;
-	font-size: 1.4em;
+	font-size: 1.2em;
 	padding: 4px 0 10px 0;
 }
 

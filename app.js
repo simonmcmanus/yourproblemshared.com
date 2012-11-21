@@ -245,7 +245,7 @@ app.get(urls.COMPANY , function(req, res, next) {
 
 
     ds.fetchParentDomain(req.params.company, function(parentDomain) {
-        console.log('pd', parentDomain);
+        
         if(parentDomain.length < 1) {
             console.log('not listed - might be the primary');
         }else {
@@ -257,18 +257,19 @@ app.get(urls.COMPANY , function(req, res, next) {
         }
     });
 
+console.log('p', req.params);
     ds.company({
         company: req.params.company
-    }, function(data, totals) {
-        console.log(data);
+    }, function(data, totals, company) {
+        // console.log(data);
         if(data.length > 0) {
             res.render('search.ejs', { 
                 data: data, 
                 selected: 'browse',
                 company: req.params.company,
-                companyName: data[0].companyName,
-                companyUrl: data[0].companyUrl,
-                companyLogo: data[0].companyLogo,
+                companyName: data[0].companyName || company.name,
+                companyUrl: data[0].companyUrl || company.url,
+                companyLogo: data[0].companyLogo || company.logo,
                 totals: totals[0],
                 encoder: encoder.encoder,
                 hideNav: false,
