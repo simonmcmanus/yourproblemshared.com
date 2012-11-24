@@ -259,13 +259,14 @@ app.get(urls.COMPANY , function(req, res, next) {
     ds.company({
         company: req.params.company
     }, function(data, totals, company) {
-
+console.log('_<<>>>', company);
 
         if(company) {
             companyName = company.name;
             companyUrl = company.url;
             companyLogo = company.logo; 
         }else {
+            company = {};
             companyName = data[0].companyName || data[0].company;
             companyUrl = data[0].companyUrl || data[0].company;
             companyLogo = data[0].companyLogo || "";
@@ -275,7 +276,7 @@ app.get(urls.COMPANY , function(req, res, next) {
             res.render('search.ejs', { 
                 data: data, 
                 selected: 'browse',
-                company: req.params.company,
+                company: company,
                 companyName: companyName,
                 companyUrl: companyUrl,
                 companyLogo: companyLogo,
