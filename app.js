@@ -202,7 +202,6 @@ app.get(urls.BROWSE, function(req, res, next) {
                 selected: 'browse', 
                 moment: require('moment'),
                 companyName: 'Browse',
-                companyDetails: {},
                 companyLogo: '',
                 hideNav: false,
                 isResolved: false,
@@ -260,24 +259,17 @@ app.get(urls.COMPANY , function(req, res, next) {
     ds.company({
         company: req.params.company
     }, function(data, totals, company) {
-console.log(data);
+
 
         if(company) {
             companyName = company.name;
             companyUrl = company.url;
             companyLogo = company.logo; 
-        }else if( data[0] && data[0].companyName) {
-            companyName = data[0].companyName;
-            companyUrl = data[0].companyUrl;
-            companyLogo = data[0].companyLogo;
-        }else if(data) {
-            companyName = data[0].company;
-            companyUrl = data[0].company;
-            companyLogo = "";
+        }else {
+            companyName = data[0].companyName || data[0].company;
+            companyUrl = data[0].companyUrl || data[0].company;
+            companyLogo = data[0].companyLogo || "";
         }
-
-
-
         // console.log(data);
         if(data.length > 0) {
             res.render('search.ejs', { 
@@ -285,8 +277,7 @@ console.log(data);
                 selected: 'browse',
                 company: req.params.company,
                 companyName: companyName,
-                companyUrl:  companyUrl,
-                companyDetails: company,
+                companyUrl: companyUrl,
                 companyLogo: companyLogo,
                 totals: totals[0],
                 encoder: encoder.encoder,
