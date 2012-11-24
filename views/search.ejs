@@ -54,10 +54,20 @@ while(c--) {
 			</div>
 			<div class="footer">
 				<%
-     		if(email.resolved === 1) {
+
+console.log( company);
+   		if(companyName !== 'Browse') {
+   			companyTitle = companyName;
+   		}else {
+   			companyTitle = companyDetails.name || email.companyName || email.company;
+
+
+   		}
+ 		if(email.resolved === 1) {
             	var msg = 'Resolved  '+moment(+email.resolvedEpoch).fromNow()
         	}else {
-            var msg = 'Reported to <a href="/'+(email.companyUrl || email.company)+'">'+(email.companyName||email.company)+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>'
+
+            var msg = 'Reported to <a href="/'+(companyDetails.url || email.companyUrl || email.company )+'">'+( companyTitle )+'</a> '+moment(new Date(unescape(email.date))).fromNow() + ' and remains <strong>unresolved</strong>'
      	   }
 				%>
 

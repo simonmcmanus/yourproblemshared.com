@@ -202,6 +202,7 @@ app.get(urls.BROWSE, function(req, res, next) {
                 selected: 'browse', 
                 moment: require('moment'),
                 companyName: 'Browse',
+                companyDetails: {},
                 companyLogo: '',
                 hideNav: false,
                 isResolved: false,
@@ -250,26 +251,43 @@ app.get(urls.COMPANY , function(req, res, next) {
             console.log('not listed - might be the primary');
         }else {
             if(parentDomain[0].url != req.params.company) {
-                res.redirect(parentDomain[0].url);
+                res.redirect(parentDomain[0].url+'/');
                 return;
 //                console.log('isPrimamry');
             }
         }
     });
-
-console.log('p', req.params);
     ds.company({
         company: req.params.company
     }, function(data, totals, company) {
+console.log(data);
+
+        if(company) {
+            companyName = company.name;
+            companyUrl = company.url;
+            companyLogo = company.logo; 
+        }else if( data[0] && data[0].companyName) {
+            companyName = data[0].companyName;
+            companyUrl = data[0].companyUrl;
+            companyLogo = data[0].companyLogo;
+        }else if(data) {
+            companyName = data[0].company;
+            companyUrl = data[0].company;
+            companyLogo = "";
+        }
+
+
+
         // console.log(data);
         if(data.length > 0) {
             res.render('search.ejs', { 
                 data: data, 
                 selected: 'browse',
                 company: req.params.company,
-                companyName: data[0].companyName || company.name,
-                companyUrl: data[0].companyUrl || company.url,
-                companyLogo: data[0].companyLogo || company.logo,
+                companyName: companyName,
+                companyUrl:  companyUrl,
+                companyDetails: company,
+                companyLogo: companyLogo,
                 totals: totals[0],
                 encoder: encoder.encoder,
                 hideNav: false,
