@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `url` varchar(1000) DEFAULT NULL,
   `logo` varchar(1000) DEFAULT NULL,
@@ -8,6 +8,7 @@ CREATE TABLE `company` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO company (id, name, url, logo, message) VALUES (null, 'McDonalds', 'mcdonalds.com', 'http://api.fanhow.com/icons/48x48/6/209/1354417.20100612135111.ico.png','');
 
 DROP TABLE IF EXISTS `domain`;
 CREATE TABLE `domain` (
@@ -16,6 +17,9 @@ CREATE TABLE `domain` (
   `domain` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO domain (id, companyId, domain) VALUES (null, 2, 'uk.mcd.com');
 
 
 DROP TABLE IF EXISTS `email`;
