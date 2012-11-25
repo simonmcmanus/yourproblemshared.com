@@ -1,0 +1,82 @@
+
+<h2>Resolve Problem</h2>
+
+<p>
+<div class="questions">
+<p>	
+	Are you happy this problem has now been resolved?
+</p>
+<p class="answer">
+	<a class="question resolve" href="/<%-company%>/mail/<%-id%>/doresolve/<%=hash%>">
+	Yes 
+	</a>
+
+	<a class="question notresolved" href="/<%-company%>/mail/<%-id%>">
+	No
+	</a>
+</p>
+</div>
+</p>
+<div id="moreDetails" style="display:none">
+	<p>
+		Thanks for resolving your problem.
+	</p>
+	<p>
+		We'd love to hear any feedback and suggestions you might have.
+	</p>
+
+	<textarea></textarea>
+	<a class="question feedback">Send Feedback</a>
+	<!--<a class="question back">Back to problem</a>-->
+</div>
+
+
+
+<script>
+$('.question.resolve').click(function(e) {
+	e.preventDefault();
+	$.ajax($(this).attr('href'), {
+		type: 'GET',
+		complete: function() {
+			$('.questions').fadeOut('fast', function() {
+				$('h2').html('Issue Resolved');
+				$('#moreDetails').fadeIn('fast');
+			});
+		}
+	});
+
+	// make request
+
+
+});
+
+$('.question.notresolved').click(function(e) {
+	e.preventDefault();
+
+	// make request
+
+	$('.questions').fadeOut('fast', function() {
+		$('h2').html('Problem Not Resolved');
+		$('#moreDetails p:first').html('Is there anything we can do to help?');
+		$('#moreDetails p:nth(1)').html('');
+		$('#moreDetails').fadeIn('fast');
+
+	});
+});
+
+$('.feedback').click(function(e) {
+	e.preventDefault();
+	if($('textarea').val() == "") {
+		return;
+	}
+	$.ajax('/feedback', {
+		type: 'POST',
+		data: {
+			feedback : 'pid('+window.location.pathname.split('/')[3]+') - '+$('textarea').val()
+		},
+		complete: function() {
+			$('#moreDetails').html('Thanks for the feedback.');
+		}
+	});
+});
+</script>

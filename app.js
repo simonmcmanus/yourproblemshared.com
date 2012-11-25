@@ -33,6 +33,8 @@ app.enable("jsonp callback"); // enable jsonp
 //app.register('.html', sizlate);
 app.register('.ejs', ejs);
 
+
+
 app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
 //  app.get(urls.HOME, function(req, res, next) {
@@ -46,6 +48,9 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 // });
 
 
+app.get('/favicon.ico', function(req, res) {
+    res.send('');
+});
  app.get(urls.HOME,  function(req, res, next) {
     res.render('home.ejs', {
         selected: 'home',
@@ -79,16 +84,31 @@ app.post(urls.FEEDBACK,  function(req, res, next) {
 
 
 app.get(urls.RESOLVE,  function(req, res, next) {
-    res.render('resolve.ejs', {
-        selected: 'browse',
-         hideNav:false, 
-         isResolved: false,
-         message: '',
-         page: 'home',
-         company: req.params.company,
-         id: req.params.id,
-         hash: req.params.hash
-     });
+    ds.emailIsResolvable({
+        id: req.params.id, 
+        hash: req.params.hash
+    }, function(isResolvable) {
+        if(isResolvable) {
+            res.render('resolve.ejs', {
+                selected: 'browse',
+                 hideNav:false, 
+                 isResolved: false,
+                 message: '',
+                 page: 'home',
+                 company: req.params.company,
+                 id: req.params.id,
+                 hash: req.params.hash
+             });            
+        }else {
+            res.render('resolveError.ejs', {
+                 hideNav: false,
+                 isResolved: false,
+                    page: '',
+                selected: '',
+                message :''
+            });
+        }
+    })
 });
 
 
@@ -170,7 +190,7 @@ app.get(urls.EMAIL, function(req, res, next) {
         if(replies && replies[0] && replies[0].resolved === 1) {
             var msg = '<strong>Resolved  '+moment(+replies[0].resolvedEpoch).fromNow()+'</strong>'
         }else {
-            var msg = 'Reported to <strong><a href="/'+( replies[0].companyUrl || replies[0].company)+'">'+(replies[0].companyName || replies[0].company )+'</a></strong> '+moment(new Date(unescape(replies[0].date))).fromNow()+' and remains <strong>UNRESOLVED</strong> '
+            var msg = 'Reported to <strong><a href="/'+( replies[0].companyUrl || replies[0].companyUrly)+'">'+(replies[0].companyName || replies[0].company )+'</a></strong> '+moment(new Date(unescape(replies[0].date))).fromNow()+' and remains <strong>UNRESOLVED</strong> '
         }
         res.render('email.ejs', {
             mail: replies,
@@ -237,11 +257,7 @@ app.post(urls.SEARCH, function(req, res, next) {
 
 
 app.get(urls.COMPANY , function(req, res, next) {
-
-
-
     ds.fetchParentDomain(req.params.company, function(parentDomain) {
-        
         if(parentDomain.length < 1) {
             console.log('not listed - might be the primary');
         }else {
@@ -255,8 +271,6 @@ app.get(urls.COMPANY , function(req, res, next) {
     ds.company({
         company: req.params.company
     }, function(data, totals, company) {
-console.log('_<<>>>', company);
-
         if(company) {
             companyName = company.name;
             companyUrl = company.url;
