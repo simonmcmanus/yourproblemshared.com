@@ -190,6 +190,9 @@ app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id,
     }, function(replies) {
+        if(!replies) {
+            res.send('does not exist');
+        }
 
         if(replies && replies[0] && replies[0].resolved === 1) {
             var msg = '<strong>Resolved  '+moment(+replies[0].resolvedEpoch).fromNow()+'</strong>'
