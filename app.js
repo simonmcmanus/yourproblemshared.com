@@ -192,6 +192,7 @@ app.get(urls.EMAIL, function(req, res, next) {
     }, function(replies) {
         if(!replies) {
             res.send('does not exist');
+            return;
         }
 
         if(replies && replies[0] && replies[0].resolved === 1) {
