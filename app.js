@@ -279,6 +279,12 @@ app.get(urls.COMPANY , function(req, res, next) {
     ds.company({
         company: req.params.company
     }, function(data, totals, company) {
+
+
+        if(!data || !totals || !company) {
+            res.send('Not found');
+            return;
+        }
         if(company) {
             companyName = company.name;
             companyUrl = company.url;
