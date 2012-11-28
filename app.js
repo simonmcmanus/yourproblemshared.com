@@ -39,8 +39,8 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
 //  app.get(urls.HOME, function(req, res, next) {
 //     res.render('comingsoon.ejs', {
-//         selected: 'home', 
-//         hideNav:true, 
+//         selected: 'home',
+//         hideNav:true,
 //         page: 'home',
 //         isResolved: false,
 //         message :''
@@ -49,6 +49,10 @@ app.use(urls.PUBLIC, express['static'](__dirname + '/public/assets/'));
 
 
 app.get('/favicon.ico', function(req, res) {
+    res.send('');
+});
+
+app.get('/robots.txt', function(req, res) {
     res.send('');
 });
  app.get(urls.HOME,  function(req, res, next) {
@@ -70,7 +74,7 @@ app.post(urls.FEEDBACK,  function(req, res, next) {
   app.get('/sample',  function(req, res, next) {
     res.render('emails/site-problem-reported.ejs', {
         selected: 'home',
-         hideNav:false, 
+         hideNav:false,
          page: 'home',
          company: 'sample.com',
          url: 'http://yourproblemshared.com/sample.com/mail/21',
@@ -85,20 +89,20 @@ app.post(urls.FEEDBACK,  function(req, res, next) {
 
 app.get(urls.RESOLVE,  function(req, res, next) {
     ds.emailIsResolvable({
-        id: req.params.id, 
+        id: req.params.id,
         hash: req.params.hash
     }, function(isResolvable) {
         if(isResolvable) {
             res.render('resolve.ejs', {
                 selected: 'browse',
-                 hideNav:false, 
+                 hideNav:false,
                  isResolved: false,
                  message: '',
                  page: 'home',
                  company: req.params.company,
                  id: req.params.id,
                  hash: req.params.hash
-             });            
+             });
         }else {
             res.render('resolveError.ejs', {
                  hideNav: false,
@@ -114,7 +118,7 @@ app.get(urls.RESOLVE,  function(req, res, next) {
 
 app.get(urls.DORESOLVE,  function(req, res, next) {
     ds.resolveEmail({
-        id: req.params.id, 
+        id: req.params.id,
         hash: req.params.hash
     }, function(data, email) {
         if(data.affectedRows > 0) {
@@ -125,7 +129,7 @@ app.get(urls.DORESOLVE,  function(req, res, next) {
                     page: '',
                 selected: '',
                 message :''
-            });  
+            });
             fs.readFile('./views/emails/user-problem-resolved.ejs', 'utf8', function(error, data) {
                 sendEmail(email[0].fromEmail, null, 'Issue Resolved - '+unescape(email[0].subject), data);
             });
@@ -148,8 +152,8 @@ app.get(urls.DORESOLVE,  function(req, res, next) {
 
  app.get(urls.ABOUT, function(req, res, next) {
     res.render('about.ejs', {
-        selected: 'about', 
-        hideNav: false, 
+        selected: 'about',
+        hideNav: false,
         page: 'about',
         isResolved: false,
         message :''
@@ -158,8 +162,8 @@ app.get(urls.DORESOLVE,  function(req, res, next) {
 
 app.get(urls.CONTACT, function(req, res, next) {
     res.render('contact.ejs', {
-        selected: 'contact', 
-        hideNav: false, 
+        selected: 'contact',
+        hideNav: false,
         page: 'contact',
         isResolved: false,
         message :''
@@ -173,7 +177,7 @@ app.get(urls.CONTACT, function(req, res, next) {
  app.get(urls.LOGO, function(req, res, next) {
     request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='+req.params.company+'+logo&imgsz=small&as_filetype=png', function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        
+
         res.send(JSON.parse(body));
       }else {
         console.log('error', error);
@@ -198,25 +202,25 @@ app.get(urls.EMAIL, function(req, res, next) {
             selected: '',
             moment: moment,
             page: 'browse',
-            hideNav: false, 
-            encoder: encoder.encoder, 
+            hideNav: false,
+            encoder: encoder.encoder,
             isResolved: replies[0].resolved,
             message :msg
         });
     });
-}); 
+});
 
 
 
 app.get(urls.BROWSE, function(req, res, next) {
     ds.browse({}, function(data) {
         if(data.length > 0) {
-            res.render('search.ejs', {  
+            res.render('search.ejs', {
                 data: data.reverse(),
-                urls: urls, 
+                urls: urls,
                 company: 'Browse',
                 page: 'browse',
-                selected: 'browse', 
+                selected: 'browse',
                 moment: require('moment'),
                 companyName: 'Browse',
                 companyLogo: '',
@@ -226,10 +230,10 @@ app.get(urls.BROWSE, function(req, res, next) {
                 message :''
             });
         }else {
-            res.render('search-no-results.ejs', {  
-                urls: urls, 
+            res.render('search-no-results.ejs', {
+                urls: urls,
                 page: 'browse',
-                hideNav: false, 
+                hideNav: false,
                 company: 'Browse',
                 isResolved: false,
                 selected: 'browse',
@@ -275,7 +279,7 @@ app.get(urls.COMPANY , function(req, res, next) {
         if(company) {
             companyName = company.name;
             companyUrl = company.url;
-            companyLogo = company.logo; 
+            companyLogo = company.logo;
         }else {
             company = {};
             companyName = data[0].companyName || data[0].company;
@@ -284,8 +288,8 @@ app.get(urls.COMPANY , function(req, res, next) {
         }
         // console.log(data);
         if(data.length > 0) {
-            res.render('search.ejs', { 
-                data: data, 
+            res.render('search.ejs', {
+                data: data,
                 selected: 'browse',
                 company: company,
                 companyName: companyName,
@@ -301,13 +305,13 @@ app.get(urls.COMPANY , function(req, res, next) {
                 message :''
             });
         }else {
-            res.render('search-no-results.ejs', {  
-                urls: urls, 
+            res.render('search-no-results.ejs', {
+                urls: urls,
                 page: 'browse',
                 totals: totals[0],
                 isResolved: false,
                 company: req.params.company,
-                hideNav: false, 
+                hideNav: false,
                 selected: 'browse',
                 message :''
             });
@@ -399,7 +403,7 @@ app.post(urls.INBOUND, function(req, res, next) {
         referenceId: headers['References'] || "",
         hash: hash
     }, function(insertData, isFirst) {
-       // only if its the first time. 
+       // only if its the first time.
         if(insertData) {
             if(+isFirst) {
                 var url = 'http://yourproblemshared.com/'+site+'/mail/'+insertData.insertId+'/';
