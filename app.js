@@ -190,7 +190,7 @@ app.get(urls.EMAIL, function(req, res, next) {
     ds.getEmail({
         id: req.params.id,
     }, function(replies) {
-        if(replies.length > 0) {
+        if(replies.length === 0) {
             res.send('does not exist');
             return;
         }
