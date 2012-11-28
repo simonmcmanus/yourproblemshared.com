@@ -32,7 +32,7 @@ font-weight:400;
 
       #wrapper {
 
-	margin: 20px 20% 0;
+	margin: 20px auto 0;
 	letter-spacing: 0.9px;
 	max-width: 800px;
       }
@@ -210,7 +210,7 @@ html body .navbar {
 	border-bottom: 0 !important;
 	padding:0 !important;
 }
-html body .navbar .nav > li.active a, 
+html body .navbar .nav > li.active a,
 html body .navbar .nav > li.active a:hover {
 	background: #fff;
 	margin-left:-3px !important;
@@ -218,7 +218,7 @@ html body .navbar .nav > li.active a:hover {
 
 html body .navbar li {
 	padding: 0 !important;
-display: inline;	
+display: inline;
 }
 
 div.social {
@@ -390,7 +390,7 @@ h2 {
 	margin-top: 0;
 	margin-bottom: 0;
 	color: #384874;
-	padding-top: 0;	
+	padding-top: 0;
 }
 
 h4 {
@@ -484,13 +484,13 @@ html body .speachWrapper.notReporter #email::before {
 
 .speachWrapper.isReporter {
 	background: no-repeat url(/assets/img/icons/user.png) top right;
-	
+
 }
 .speachWrapper.isReporter #email {
 	margin-left: 0;
 	margin-right: 40px;
 }
-#email.isReporter .emailImg img, 
+#email.isReporter .emailImg img,
 #email.isReporter .emailImg {
 	float: left;
 }
@@ -528,7 +528,7 @@ html body .email h4 a {
 }
 .feature span {
 	padding: 5px 15px;
-	font-weight:bold;	
+	font-weight:bold;
 	text-decoration:none;
 	border-radius: 5px;
 	margin: 5px;
@@ -548,7 +548,7 @@ html body .email h4 a {
   	padding:7px ;
   }
   .nav li  a {
-  	padding: 5px 15px !important;  	
+  	padding: 5px 15px !important;
   }
 
 
